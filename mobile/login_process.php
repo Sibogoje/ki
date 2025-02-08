@@ -36,11 +36,19 @@ try {
         }
 
         // Query to check if the user exists
-        $query = "SELECT user_id, username, password_hash, status FROM users WHERE username = ?";
+        $query = "SELECT user_id, password_hash, status FROM users WHERE phone_number = ?";
         $stmt = $db->prepare($query);
+        if (!$stmt) {
+            throw new Exception("Prepare statement failed: " . $db->error);
+        }
         $stmt->bind_param('s', $username);
-        $stmt->execute();
+        if (!$stmt->execute()) {
+            throw new Exception("Execute statement failed: " . $stmt->error);
+        }
         $result = $stmt->get_result();
+        if (!$result) {
+            throw new Exception("Get result failed: " . $stmt->error);
+        }
 
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
