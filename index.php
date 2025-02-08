@@ -239,6 +239,9 @@ header h2 {
     </footer>
 
     <script>
+        // Set the window.loggedIn variable based on PHP session
+        window.loggedIn = <?php echo json_encode($loggedIn); ?>;
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
                 .then((registration) => {
