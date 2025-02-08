@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header, footer {
             width: 100%;
             text-align: center;
-            padding: 10px;
+            padding: 1px;
             background-color: #004080;
         }
         .container {
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             max-width: 400px;
             text-align: center;
-            margin: 20px 0;
+            margin: 10px 0;
         }
         .container h1 {
             margin-bottom: 20px;
