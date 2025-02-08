@@ -101,9 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             padding: 1px;
             background-color: #004080;
+            color: green;
         }
         .container {
-            background-color:rgb(18, 156, 0);
+            background-color: #004080;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
