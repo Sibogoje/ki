@@ -15,9 +15,9 @@ $phone = $_SESSION['phone_number'] ?? '';
 // Fetch bookings for the logged-in user
 $bookings = [];
 if (!empty($phone)) {
-    $query = "SELECT * FROM booking_info WHERE user_phone_number = ?";
+    $query = "SELECT * FROM booking_info WHERE user_id = ?";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('s', $phone);
+    $stmt->bind_param('s', $_SESSION['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
