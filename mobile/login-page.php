@@ -97,7 +97,7 @@
             </div>
         <?php endif; ?>
         <div class="links">
-            <a href="mobile/forgot_login.php">Forgot Login?</a>
+            <a href="mobile/forgot_password.php">Forgot Login?</a>
             <a href="register.php">Register</a>
         </div>
         <div class="sponsors">
