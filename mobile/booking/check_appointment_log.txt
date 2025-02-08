@@ -1,0 +1,88 @@
+POST Data: null
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-08-29 06:25:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-08-29 06:25:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-11-29 12:00:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2025-01-12 12:30:00","counselor":"Sandiso Maziya"}
+Counselor ID: 4
+POST Data: {"datetime":"2024-12-12 12:01:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Mandla Masina"}
+Counselor ID: 3
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Sandiso Maziya"}
+Counselor ID: 4
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Siboniso Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-11-20 12:35:00","counselor":"Mandla Masina"}
+Counselor ID: 3
+POST Data: {"datetime":"2024-11-24 12:34:00","counselor":"Siboniso L Sibandze"}
+Counselor ID: 2
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-30 13:24:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-12 16:00:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2024-12-23 12:23:00","counselor":"Mlungisi","mode":"Online"}
+Counselor ID: 
+POST Data: {"datetime":"2\/12\/2024 20:18:00","counselor":"Mlungisi","mode":"Virtual"}
+Counselor ID: 
+POST Data: {"datetime":"2\/12\/2024 20:18:00","counselor":"Mlungisi","mode":"Virtual"}
+POST Data: {"datetime":"2\/12\/2024 20:22:00","counselor":"Mlungisi","mode":"In-Person"}
+POST Data: {"datetime":"2\/12\/2024 20:22:00","counselor":"Mlungisi","mode":"Virtual"}
+POST Data: {"datetime":"2\/12\/2024 20:22:00","counselor":"Mlungisi","mode":"Virtual"}
+POST Data: {"datetime":"2\/12\/2024 20:22:00","counselor":"Mlungisi","mode":"Virtual"}
+POST Data: {"datetime":"2\/12\/2024 20:24:00","counselor":"Mlungisi","mode":"Virtual"}

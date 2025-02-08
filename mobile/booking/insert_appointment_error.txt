@@ -1,0 +1,7 @@
+Unknown column 'name' in 'where clause'
+Unknown column 'name' in 'where clause'
+Cannot add or update a child row: a foreign key constraint fails (`u747325399_kwakha`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`counselor_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE)
+Cannot add or update a child row: a foreign key constraint fails (`u747325399_kwakha`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`counselor_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE)
+Cannot add or update a child row: a foreign key constraint fails (`u747325399_kwakha`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`counselor_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE)
+Cannot add or update a child row: a foreign key constraint fails (`u747325399_kwakha`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`counselor_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE)
+Cannot add or update a child row: a foreign key constraint fails (`u747325399_kwakha`.`bookings`, CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE)
