@@ -4,6 +4,9 @@ include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
 
+$showOtpForm = false;
+$phone_number = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['request_otp'])) {
         $phone_number = $_POST['phone_number'];
@@ -34,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $_SESSION['success'] = 'OTP sent to your phone number.';
                 $_SESSION['phone_number'] = $phone_number; // Store phone number in session
+                $showOtpForm = true;
             }
         } else {
             $_SESSION['error'] = 'Failed to generate OTP';
@@ -149,6 +153,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .container .message p.success {
             color: #00a65a;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -168,10 +175,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
         <form method="POST" action="forgot_password.php">
-            <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+            <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" value="<?php echo isset($_SESSION['phone_number']) ? $_SESSION['phone_number'] : ''; ?>" required>
             <button type="submit" name="request_otp">Request OTP</button>
         </form>
-        <form method="POST" action="forgot_password.php">
+        <form method="POST" action="forgot_password.php" class="<?php echo $showOtpForm ? '' : 'hidden'; ?>">
             <input type="text" id="otp" name="otp" placeholder="OTP" required>
             <input type="password" id="new_password" name="new_password" placeholder="New Password" required>
             <button type="submit" name="reset_password">Reset Password</button>
