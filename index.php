@@ -224,7 +224,7 @@ header h2 {
                 SETTINGS
             </a>
             <?php if ($loggedIn) { ?>
-                <a href="logout.php" class="section-button">
+                <a href="mobile/logout.php" class="section-button">
                     <img src="sign in.png" alt="Logout">
                     LOGOUT
                 </a>
