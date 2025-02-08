@@ -1,7 +1,7 @@
 <?php
 // Include the database connection file
 // Include database connection
-include('../con.php');
+include('../zon.php');
 $conn = new Con();
 $db = $conn->connect();
 

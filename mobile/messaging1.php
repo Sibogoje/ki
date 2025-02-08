@@ -1,5 +1,5 @@
 <?php
-include('../con.php');
+include('../zon.php');
 session_start();
 
 $conn = new Con();

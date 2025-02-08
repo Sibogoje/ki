@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../con.php'); // Include your database configuration file
+include('../zon.php'); // Include your database configuration file
 
 $conn = new Con();
 $db = $conn->connect();

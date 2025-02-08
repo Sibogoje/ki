@@ -4,7 +4,7 @@ $loggedIn = isset($_SESSION['user_id']); // Check if user_id is set in session
 $user = null;
 
 if ($loggedIn) {
-    include 'con.php';
+    include 'zon.php';
     $conn = new Con();
     $db = $conn->connect();
     $query = "SELECT name FROM users WHERE user_id = ?";

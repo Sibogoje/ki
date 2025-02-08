@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login-page.php');
     exit();
 }
-include '../con.php';
+include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
 //$phone = $_GET['phone'];

@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Connect to database
-include '../../con.php';
+include '../../zon.php';
 $con = new Con();
 $conn = $con->connect();
 

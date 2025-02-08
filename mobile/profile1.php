@@ -1,6 +1,6 @@
 <?php
 // Database connection
-include('../con.php');
+include('../zon.php');
 $conn = new Con();
 $db = $conn->connect();
 // Fetch the user data for the profile
