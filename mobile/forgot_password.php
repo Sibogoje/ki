@@ -83,29 +83,81 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        .container input[type="text"], .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        .container button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container .message {
+            margin-top: 20px;
+        }
+        .container .message p {
+            color: #ff0000;
+        }
+        .container .message p.success {
+            color: #00a65a;
+        }
+    </style>
 </head>
 <body>
-    <?php
-    if (isset($_SESSION['error'])) {
-        echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
-        unset($_SESSION['error']);
-    }
-    if (isset($_SESSION['success'])) {
-        echo '<p style="color: green;">' . $_SESSION['success'] . '</p>';
-        unset($_SESSION['success']);
-    }
-    ?>
-    <form method="POST" action="forgot_password.php">
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" required>
-        <button type="submit" name="request_otp">Request OTP</button>
-    </form>
-    <form method="POST" action="forgot_password.php">
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" name="otp" required>
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" required>
-        <button type="submit" name="reset_password">Reset Password</button>
-    </form>
+    <div class="container">
+        <h1>Forgot Password</h1>
+        <?php
+        if (isset($_SESSION['error'])) {
+            echo '<div class="message"><p>' . $_SESSION['error'] . '</p></div>';
+            unset($_SESSION['error']);
+        }
+        if (isset($_SESSION['success'])) {
+            echo '<div class="message"><p class="success">' . $_SESSION['success'] . '</p></div>';
+            unset($_SESSION['success']);
+        }
+        ?>
+        <form method="POST" action="forgot_password.php">
+            <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+            <button type="submit" name="request_otp">Request OTP</button>
+        </form>
+        <form method="POST" action="forgot_password.php">
+            <input type="text" id="otp" name="otp" placeholder="OTP" required>
+            <input type="password" id="new_password" name="new_password" placeholder="New Password" required>
+            <button type="submit" name="reset_password">Reset Password</button>
+        </form>
+    </div>
 </body>
 </html>
