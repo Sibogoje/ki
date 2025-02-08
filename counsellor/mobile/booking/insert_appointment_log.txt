@@ -1,0 +1,56 @@
+POST Data: []
+Fetched Data: datetime=, counselorName=, mode=
+Counselor ID: 
+Insertion Result: Success
+
+POST Data: []
+Fetched Data: datetime=, counselorName=, mode=
+Counselor ID: 
+Insertion Result: Success
+
+POST Data: []
+Fetched Data: datetime=, counselorName=, mode=
+Counselor ID: 
+Insertion Result: Success
+
+POST Data: []
+Fetched Data: datetime=, counselorName=, mode=
+Counselor ID: 
+Insertion Result: Success
+
+POST Data: {"datetime":"2024-11-01 10:46:00","counselor":"Mandla Masina","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:46:00, counselorName=Mandla Masina, mode=Online
+POST Data: {"datetime":"2024-11-01 10:46:00","counselor":"Mandla Masina","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:46:00, counselorName=Mandla Masina, mode=Online
+POST Data: {"datetime":"2024-11-01 10:46:00","counselor":"Mandla Masina","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:46:00, counselorName=Mandla Masina, mode=Online
+POST Data: {"datetime":"2024-11-01 10:46:00","counselor":"Mandla Masina","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:46:00, counselorName=Mandla Masina, mode=Online
+POST Data: {"datetime":"2024-11-01 10:29:00","counselor":"Siboniso Sibandze","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:29:00, counselorName=Siboniso Sibandze, mode=Online
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+Extracted Data: datetime=2024-11-01 10:50:00, counselorName=Siboniso Sibandze, mode=Online
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-01 10:50:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-09-06 06:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-29 12:00:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2025-01-12 12:30:00","counselor":"Sandiso Maziya","mode":"Offline"}
+POST Data: {"datetime":"2024-12-12 12:01:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Mandla Masina","mode":"Online"}
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Sandiso Maziya","mode":"Online"}
+POST Data: {"datetime":"2024-11-21 13:01:00","counselor":"Siboniso Sibandze","mode":"Online"}
+POST Data: {"datetime":"2024-11-20 12:35:00","counselor":"Mandla Masina","mode":"Online"}
+POST Data: {"datetime":"2024-11-24 12:34:00","counselor":"Siboniso L Sibandze","mode":"Online"}
