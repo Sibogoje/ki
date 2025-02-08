@@ -7,62 +7,24 @@ if (!isset($_SESSION['user_id'])) {
 include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
-session_start();
 
-$phone = $_SESSION['phone_number'] ?? '';
-//$phone = "08097232639";
+$user_id = $_SESSION['user_id'];
 
 // Fetch bookings for the logged-in user
 $bookings = [];
-if (!empty($phone)) {
-    $query = "SELECT * FROM booking_info WHERE user_id = ?";
-    $stmt = $db->prepare($query);
-    $stmt->bind_param('s', $_SESSION['user_id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-        $bookings[] = $row;
-    }
-    $stmt->close();
+$query = "SELECT b.booking_id, u.name AS counselor_name, u.surname AS counselor_surname, b.booking_date, b.mode, b.status 
+          FROM bookings b
+          JOIN users u ON b.counselor_id = u.user_id
+          WHERE b.user_id = ?";
+$stmt = $db->prepare($query);
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $bookings[] = $row;
 }
-//$db->close();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_id = $_SESSION['user_id'];
-    $counselor_id = $_POST['counselor_id'];
-    $booking_date = $_POST['booking_date'];
-    $mode = $_POST['mode'];
-
-    // Check if the counselor is available
-    $checkAvailabilityQuery = "SELECT COUNT(*) as count FROM bookings WHERE counselor_id = ? AND booking_date = ? AND status = 'confirmed'";
-    $stmt = $db->prepare($checkAvailabilityQuery);
-    $stmt->bind_param("is", $counselor_id, $booking_date);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-
-    if ($row['count'] > 0) {
-        // Counselor is not available
-        echo "<div class='alert alert-danger' id='booking-feedback'>Counselor is not available at the selected time.</div>";
-    } else {
-        // Insert booking
-        $insertBookingQuery = "INSERT INTO bookings (user_id, counselor_id, booking_date, mode) VALUES (?, ?, ?, ?)";
-        $stmt = $db->prepare($insertBookingQuery);
-        $stmt->bind_param("iiss", $user_id, $counselor_id, $booking_date, $mode);
-
-        if ($stmt->execute()) {
-            echo "<div class='alert alert-success' id='booking-feedback'>Booking successful!</div>";
-        } else {
-            echo "<div class='alert alert-danger' id='booking-feedback'>Booking failed. Please try again.</div>";
-        }
-    }
-
-    // Close statement
-    $stmt->close();
-}
-
-// Close connection
-//$db->close();
+$stmt->close();
+$db->close();
 ?>
 
 <script>
@@ -171,12 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 Booking ID: <?php echo htmlspecialchars($booking['booking_id']); ?>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo htmlspecialchars($booking['user_name'] . ' ' . $booking['user_surname']); ?></h5>
+                                <h5 class="card-title"><?php echo htmlspecialchars($booking['counselor_name'] . ' ' . $booking['counselor_surname']); ?></h5>
                                 <p class="card-text">
-                                    <strong>Counselor:</strong> <?php echo htmlspecialchars($booking['counselor_name'] . ' ' . $booking['counselor_surname']); ?><br>
                                     <strong>Date:</strong> <?php echo htmlspecialchars($booking['booking_date']); ?><br>
-                                    <strong>Status:</strong> <span class="badge bg-<?php echo $booking['STATUS'] === 'confirmed' ? 'success' : ($booking['STATUS'] === 'pending' ? 'warning' : 'danger'); ?>"><?php echo htmlspecialchars($booking['STATUS']); ?></span><br>
-                                    <strong>Mode:</strong> <?php echo htmlspecialchars($booking['MODE']); ?>
+                                    <strong>Status:</strong> <span class="badge bg-<?php echo $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : 'danger'); ?>"><?php echo htmlspecialchars($booking['status']); ?></span><br>
+                                    <strong>Mode:</strong> <?php echo htmlspecialchars($booking['mode']); ?>
                                 </p>
                             </div>
                         </div>
