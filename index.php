@@ -186,7 +186,7 @@ header h2 {
             <li><a href="mobile/donate.php">Donate</a></li>
             <li><a href="mobile/profile.php">Settings</a></li>
             <?php if ($loggedIn) { ?>
-                <li><a href="mobile/logout.php">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li>
             <?php } else { ?>
                 <li><a href="mobile/login-page.php">Sign In/Sign Up</a></li>
             <?php } ?>
@@ -219,7 +219,7 @@ header h2 {
                 SETTINGS
             </a>
             <?php if ($loggedIn) { ?>
-                <a href="mobile/logout.php" class="section-button">
+                <a href="logout.php" class="section-button">
                     <img src="sign in.png" alt="Logout">
                     LOGOUT
                 </a>
