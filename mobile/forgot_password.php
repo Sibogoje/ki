@@ -94,18 +94,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
             height: 100vh;
             margin: 0;
             padding: 0;
         }
-        header, footer {
+        header {
             width: 100%;
             text-align: center;
-            padding: 1px;
+            padding: 10px;
             background-color: #004080;
             color: green;
+            position: fixed;
+            top: 0;
         }
         .container {
             background-color: #004080;
@@ -115,8 +116,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             max-width: 400px;
             text-align: center;
-            margin: 10px 0;
+            margin: 80px 0; /* Adjust margin to account for fixed header */
             color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .container h1 {
             margin-bottom: 20px;
