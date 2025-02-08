@@ -24,7 +24,7 @@ while ($row = $result->fetch_assoc()) {
     $bookings[] = $row;
 }
 $stmt->close();
-$db->close();
+//$db->close();
 ?>
 
 <script>
@@ -174,7 +174,7 @@ $db->close();
                                 <option value="">Select Counselor</option>
                                 <?php
                                 // Fetch counselors from the database
-                                $query = "SELECT `user_id`, `name`, `surname` FROM `users` WHERE user_role = 'counselor'";
+                                $query = "SELECT `user_id`, `name`, `surname` FROM `users` WHERE user_role = 'counselor' ";
                                 $result = $db->query($query);
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<option value='{$row['user_id']}'>{$row['name']} {$row['surname']}</option>";
