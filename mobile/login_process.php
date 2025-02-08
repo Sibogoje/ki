@@ -2,24 +2,23 @@
 session_start();
 include('../zon.php'); // Include your database configuration file
 
-$conn = new Con();
-$db = $conn->connect();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $phone_number = $_POST['phone_number'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $conn = new Con();
+    $db = $conn->connect();
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     // Validate input
-    if (empty($phone_number) || empty($password)) {
-        $_SESSION['error'] = 'Phone number and password are required.';
+    if (empty($username) || empty($password)) {
+        $_SESSION['error'] = 'Username and password are required.';
         header('Location: login-page.php');
         exit();
     }
 
     // Query to check if the user exists
-    $query = "SELECT user_id, phone_number, password_hash, status FROM users WHERE phone_number = ?";
+    $query = "SELECT user_id, username, password_hash, status FROM users WHERE username = ?";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('s', $phone_number);
+    $stmt->bind_param('s', $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -32,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($user['status'] == 1) {
                 // Set session variables and log in the user
                 $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['phone_number'] = $user['phone_number'];
+                $_SESSION['username'] = $user['username'];
 
                 // Redirect to the home page
                 header('Location: ../index.php');
@@ -43,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['error'] = 'Account blocked. Contact Kwakha Indvodza.';
             }
         } else {
-            $_SESSION['error'] = 'Invalid phone number or password.';
+            $_SESSION['error'] = 'Invalid username or password.';
         }
     } else {
-        $_SESSION['error'] = 'Invalid phone number or password.';
+        $_SESSION['error'] = 'Invalid username or password.';
     }
 
     $stmt->close();
