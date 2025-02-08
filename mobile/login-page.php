@@ -10,12 +10,19 @@
             color: #ffffff;
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             padding-left: 20px;
             padding-right: 20px;
+        }
+        header, footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #004080;
         }
         .container {
             text-align: center;
@@ -25,6 +32,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
+            margin: 20px 0;
         }
         .container img {
             width: 100px;
@@ -82,6 +90,9 @@
     </style>
 </head>
 <body>
+    <header>
+        <h2>Welcome to Our App</h2>
+    </header>
     <?php
     session_start();
     ?>
@@ -111,5 +122,8 @@
             <img src="../ki.png" alt="KI">
         </div>
     </div>
+    <footer>
+        <p>&copy; 2023 Our App. All rights reserved.</p>
+    </footer>
 </body>
 </html>
