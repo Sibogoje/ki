@@ -112,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             max-width: 400px;
             text-align: center;
             margin: 10px 0;
+            color: white;
         }
         .container h1 {
             margin-bottom: 20px;
