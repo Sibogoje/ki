@@ -24,7 +24,7 @@ while ($row = $result->fetch_assoc()) {
     $bookings[] = $row;
 }
 $stmt->close();
-//$db->close();
+$db->close();
 ?>
 
 <script>
@@ -49,7 +49,7 @@ $stmt->close();
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../icon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script>
+    <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('../service-worker.js')
                 .then((registration) => {
@@ -72,11 +72,11 @@ $stmt->close();
             color: green !important; /* Header text color is green */
         }
         .main2 {
-            margin-top: 120px; /* Adjust this value to ensure content appears below the header */
+            margin-top: 80px; /* Adjust this value to ensure content appears below the header */
             margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
             width: 100%; /* Make the main container full width */
             color: black; /* Keep content text color black */
-            padding-top: 100px; /* Add padding to the top of the main container */
+            padding-top: 20px; /* Add padding to the top of the main container */
         }
         .form-label {
             font-weight: bold;
