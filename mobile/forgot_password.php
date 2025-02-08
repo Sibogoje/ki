@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         .container {
             background-color: #004080;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -116,11 +116,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         .container h1 {
             margin-bottom: 20px;
-            color: #333333;
+            color:rgb(255, 255, 255);
         }
         .container input[type="text"], .container input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 20px;
             margin: 10px 0;
             border: 1px solid #cccccc;
             border-radius: 5px;
