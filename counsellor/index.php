@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Prepare and execute query to fetch user details (including name, surname, and role)
-    $sql = "SELECT user_id, name, surname, user_role, password_hash FROM users WHERE phone_number = ?  ";
+    $sql = "SELECT user_id, name, surname, user_role, password_hash FROM users WHERE email = ?  ";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $username);
     $stmt->execute();
