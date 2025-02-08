@@ -11,12 +11,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 0;
         }
         header, footer {
             width: 100%;
