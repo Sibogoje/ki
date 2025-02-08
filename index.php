@@ -242,6 +242,21 @@ header h2 {
         // Set the window.loggedIn variable based on PHP session
         window.loggedIn = <?php echo json_encode($loggedIn); ?>;
 
+        // Unregister service worker and clear cache
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then((registrations) => {
+                registrations.forEach((registration) => {
+                    registration.unregister();
+                });
+            });
+
+            caches.keys().then((cacheNames) => {
+                cacheNames.forEach((cacheName) => {
+                    caches.delete(cacheName);
+                });
+            });
+        }
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
                 .then((registration) => {
