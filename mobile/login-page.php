@@ -20,7 +20,7 @@
         header, footer {
             width: 100%;
             text-align: center;
-            padding: 10px;
+            padding: 0px;
             background-color: #004080;
         }
         .container {
