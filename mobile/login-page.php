@@ -20,17 +20,18 @@
         .container {
             text-align: center;
             background-color: #004080;
-            padding: 10px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin: 10px; /* Add margin for small screens */
+            width: 100%;
+            max-width: 400px;
         }
         .container img {
             width: 100px;
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
         .container h1 {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .container input[type="text"], .container input[type="password"] {
             width: 80%;
@@ -40,23 +41,27 @@
             border-radius: 5px;
         }
         .container input[type="submit"] {
-            background-color:rgb(51, 186, 186);
-            color:rgb(0, 0, 0);
+            background-color: rgb(51, 186, 186);
+            color: rgb(0, 0, 0);
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             width: 85%; /* Make the button width equal to the card */
-            font-weight : bold;
+            font-weight: bold;
         }
         .container input[type="submit"]:hover {
             background-color: rgb(51, 186, 186);
         }
         .sponsors {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .sponsors img {
             width: 50px;
+            height: 50px;
             margin: 0 10px;
         }
         .links {
@@ -101,7 +106,7 @@
             <a href="register.php">Register</a>
         </div>
         <div class="sponsors">
-            <img src="../fnb foundation.png" alt="FNB" height="55px" >
+            <img src="../fnb foundation.png" alt="FNB">
             <img src="../icon.png" alt="Logo">
             <img src="../ki.png" alt="KI">
         </div>
