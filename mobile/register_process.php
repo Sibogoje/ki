@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $disability = $_POST['disability'];
     $constituency = $_POST['constituency'];
     $community = $_POST['community'];
+    $user_role = "client";
     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
     // Check phone number and email uniqueness
@@ -38,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Insert user data into `users` table
-    $query = "INSERT INTO users (name, surname, email, phone_number, password_hash, town, region, age, marital, gender, education, orphan, disability, constituency, community, created_at) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+    $query = "INSERT INTO users (name, user_role, surname, email, phone_number, password_hash, town, region, age, marital, gender, education, orphan, disability, constituency, community, created_at) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param('sssssssssssssss', $name, $surname, $email, $phone_number, $passwordHash, $town, $region, $age, $marital, $gender, $education, $orphan, $disability, $constituency, $community);
+    $stmt->bind_param('ssssssssssssssss', $name,$user_role, $surname, $email, $phone_number, $passwordHash, $town, $region, $age, $marital, $gender, $education, $orphan, $disability, $constituency, $community);
 
     if ($stmt->execute()) {
         // User successfully saved, now generate and send OTP
