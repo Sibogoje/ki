@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['error'] = 'Failed to send OTP';
             } else {
                 $_SESSION['success'] = 'OTP sent to your phone number.';
+                $_SESSION['phone_number'] = $phone_number; // Store phone number in session
             }
         } else {
             $_SESSION['error'] = 'Failed to generate OTP';
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $stmt->close();
     } elseif (isset($_POST['reset_password'])) {
-        $phone_number = $_POST['phone_number'];
+        $phone_number = $_SESSION['phone_number']; // Retrieve phone number from session
         $otp = $_POST['otp'];
         $new_password = $_POST['new_password'];
         $passwordHash = password_hash($new_password, PASSWORD_BCRYPT);
@@ -104,7 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" id="otp" name="otp" required>
         <label for="new_password">New Password:</label>
         <input type="password" id="new_password" name="new_password" required>
-        <input type="hidden" name="phone_number" value="<?php echo isset($_POST['phone_number']) ? $_POST['phone_number'] : ''; ?>">
         <button type="submit" name="reset_password">Reset Password</button>
     </form>
 </body>
