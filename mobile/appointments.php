@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 
-$db->close();
+
 ?>
 
 <script>
@@ -232,4 +232,8 @@ $db->close();
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
+<?php 
+$db->close();
+?>
 </html>
