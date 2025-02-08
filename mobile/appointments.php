@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login-page.php');
+    exit();
+}
 include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
