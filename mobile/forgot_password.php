@@ -143,7 +143,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <?php include '../header.php'; ?>
+<header>
+        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
+    </header>
     <div class="container">
         <h1>Forgot Password</h1>
         <?php
@@ -166,6 +168,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" name="reset_password">Reset Password</button>
         </form>
     </div>
-    <?php include '../footer.php'; ?>
+    <footer class="bg-dark text-white text-center py-3">
+    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
+    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
+    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
+    </footer>
 </body>
 </html>
