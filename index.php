@@ -7,7 +7,7 @@ if ($loggedIn) {
     include 'zon.php';
     $conn = new Con();
     $db = $conn->connect();
-    $query = "SELECT name FROM users WHERE user_id = ?";
+    $query = "SELECT `name`, `surname` FROM users WHERE user_id = ?";
     $stmt = $db->prepare($query);
     $stmt->bind_param('i', $_SESSION['user_id']);
     $stmt->execute();
