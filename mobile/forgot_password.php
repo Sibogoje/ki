@@ -83,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background-color: #f0f0f0;
@@ -92,13 +93,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .container {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
         }
         .container h1 {
@@ -111,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin: 10px 0;
             border: 1px solid #cccccc;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         .container button {
             background-color: #007bff;
@@ -121,6 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             cursor: pointer;
             width: 100%;
             font-weight: bold;
+            box-sizing: border-box;
         }
         .container button:hover {
             background-color: #0056b3;
