@@ -163,7 +163,13 @@ header h2 {
 <header>
     <div class="header-container">
         <div class="hamburger" onclick="toggleNavDrawer()">&#9776;</div>
-        <h2>A SAFE SPACE FOR YOU</h2>
+        <h2>
+            <?php if ($loggedIn && $user) { ?>
+                Welcome - <?php echo htmlspecialchars($user['name']); ?>
+            <?php } else { ?>
+                A SAFE SPACE FOR YOU
+            <?php } ?>
+        </h2>
     </div>
 </header>
 
