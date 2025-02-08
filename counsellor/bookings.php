@@ -51,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Fetch existing bookings for the logged-in user
-$sql = "SELECT b.booking_id, u.name AS counselor_name, u.surname AS counselor_surname, b.booking_date, b.mode, b.status FROM bookings b
-        JOIN users u ON b.counselor_id = u.user_id
+$sql = "SELECT b.booking_id, u.name AS client_name, u.surname AS client_surname, b.booking_date, b.mode, b.status FROM bookings b
+        JOIN users u ON b.user_id = u.user_id
         WHERE b.counselor_id = ?";
 $stmt = $db->prepare($sql);
 $stmt->bind_param('i', $_SESSION['counselor_id']);
@@ -152,7 +152,7 @@ $db->close();
             while ($row = $bookings->fetch_assoc()) { ?>
                 <tr>
                     <td><?php echo $row['booking_id']; ?></td>
-                    <td><?php echo $row['counselor_name']." ".$row['counselor_surname']; ?></td>
+                    <td><?php echo $row['client_name']." ".$row['client_surname']; ?></td>
                     <td><?php echo $row['booking_date']; ?></td>
                     <td><?php echo $row['status']; ?></td>
                     <td><?php echo ucfirst($row['mode']); ?></td>
