@@ -122,7 +122,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2023 Our App. All rights reserved.</p>
+        <p>&copy; 2025 Kwakhwa Indvodza. All rights reserved.</p>
     </footer>
 </body>
 </html>

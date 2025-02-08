@@ -89,12 +89,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            padding: 0;
+        }
+        header, footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #004080;
         }
         .container {
             background-color: #ffffff;
@@ -104,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             max-width: 400px;
             text-align: center;
+            margin: 20px 0;
         }
         .container h1 {
             margin-bottom: 20px;
@@ -143,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-<header>
+    <header>
         <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
     </header>
     <div class="container">
