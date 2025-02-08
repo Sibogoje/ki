@@ -24,7 +24,30 @@ while ($row = $result->fetch_assoc()) {
     $bookings[] = $row;
 }
 $stmt->close();
-//$db->close();
+
+// Handle booking submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $counselor_id = $_POST['counselor_id'];
+    $booking_date = $_POST['booking_date'];
+    $mode = $_POST['mode'];
+
+    // Insert booking into the bookings table
+    $query = "INSERT INTO bookings (user_id, counselor_id, booking_date, mode) VALUES (?, ?, ?, ?)";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('iiss', $user_id, $counselor_id, $booking_date, $mode);
+
+    if ($stmt->execute()) {
+        $_SESSION['success'] = 'Booking successful!';
+    } else {
+        $_SESSION['error'] = 'Failed to make booking. Please try again.';
+    }
+
+    $stmt->close();
+    header('Location: appointments.php');
+    exit();
+}
+
+$db->close();
 ?>
 
 <script>
@@ -179,7 +202,6 @@ $stmt->close();
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<option value='{$row['user_id']}'>{$row['name']} {$row['surname']}</option>";
                                 }
-                                $db->close();
                                 ?>
                             </select>
                         </div>
