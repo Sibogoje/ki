@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -116,12 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             max-width: 400px;
             text-align: center;
-            margin: 80px 0; /* Adjust margin to account for fixed header */
             color: white;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         .container h1 {
             margin-bottom: 20px;
