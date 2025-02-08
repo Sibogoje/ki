@@ -24,7 +24,7 @@ while ($row = $result->fetch_assoc()) {
     $bookings[] = $row;
 }
 $stmt->close();
-$db->close();
+//$db->close();
 ?>
 
 <script>
