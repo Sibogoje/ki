@@ -143,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+    <?php include '../header.php'; ?>
     <div class="container">
         <h1>Forgot Password</h1>
         <?php
@@ -165,5 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" name="reset_password">Reset Password</button>
         </form>
     </div>
+    <?php include '../footer.php'; ?>
 </body>
 </html>
