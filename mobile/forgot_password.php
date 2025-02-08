@@ -156,6 +156,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .hidden {
             display: none;
         }
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #004080;
+            color: white;
+            position: fixed;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -184,10 +193,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" name="reset_password">Reset Password</button>
         </form>
     </div>
-    <footer class="bg-dark text-white text-center py-3">
-    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
-    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
-    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
+    <footer>
+        <p>&copy; 2023 Kwakhwa Indvodza. All rights reserved.</p>
     </footer>
 </body>
 </html>
