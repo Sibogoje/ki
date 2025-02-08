@@ -1,6 +1,6 @@
 <?php
 include '../session.php';
-include('../con.php');
+include('../zon.php');
 $conn = new Con();
 $db = $conn->connect();
 // Get the chat_id from the request

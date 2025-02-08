@@ -1,5 +1,5 @@
 <?php
-include 'admin/con.php';
+include 'admin/zon.php';
 
 $conn = new Con();
 $db = $conn->connect();

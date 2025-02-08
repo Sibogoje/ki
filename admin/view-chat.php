@@ -1,4 +1,4 @@
-<?php include('con.php'); $conn = new Con(); $db = $conn->connect(); 
+<?php include('zon.php'); $conn = new Con(); $db = $conn->connect(); 
 include 'session.php';
 ?>
 

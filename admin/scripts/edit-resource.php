@@ -1,5 +1,5 @@
 <?php
-include('../con.php'); // Include the database connection file
+include('../zon.php'); // Include the database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $resource_id = $_GET['id'];

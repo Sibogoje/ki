@@ -1,5 +1,5 @@
 <?php
-include('../con.php'); // Ensure correct path to your database connection file
+include('../zon.php'); // Ensure correct path to your database connection file
 
 // Retrieve form data
 $appointment_id = $_POST['appointment_id'];

@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include('../con.php');
+include('../zon.php');
 $conn = new Con();
 $db = $conn->connect();
 

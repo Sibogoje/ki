@@ -1,6 +1,6 @@
 <?php
 
-include('../con.php');
+include('../zon.php');
 $con = new Con();
 $conn = $con->connect();
 

@@ -1,6 +1,6 @@
 <?php
 // Include your custom connection class file
-include('../con.php');
+include('../zon.php');
 
 // Initialize the connection
 $conn = new Con();

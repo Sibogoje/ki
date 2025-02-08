@@ -66,7 +66,7 @@
             </thead>
             <tbody>
               <?php
-              include('con.php');
+              include('zon.php');
               $conn = new Con();
               $db = $conn->connect();
 
@@ -120,7 +120,7 @@
               <label for="appointment_id" class="form-label">Appointment ID</label>
               <select class="form-control" id="appointment_id" name="appointment_id" required>
                 <?php
-               // include('con.php');
+               // include('zon.php');
                // $conn = new Con();
                 $db = $conn->connect();
 
