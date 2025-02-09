@@ -230,14 +230,8 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
           </div>
           <div class="mb-3">
             <label for="editStatusSelect" class="form-label">Status</label>
-            <select class="form-select" id="editStatusSelect" name="editStatusSelect" required>
-              <!-- Options will be populated dynamically -->
-              <option value="">Update Status</option>
-              <option value="pending">Pending</option>
-               <option value="confirmed">Confirm</option>
-                <option value="completed">Complete</option>
-                 <option value="canceled">Cancel</option>
-            </select>
+            <input type="datetime-local" class="form-control" id="editStatusSelect" name="editStatusSelect" disabled>
+            
           </div>
           <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
