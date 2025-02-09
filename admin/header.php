@@ -128,11 +128,6 @@ require_once 'session.php';
                     </a>
                 </li>
                 <li>
-                    <a href="calendar-view.php">
-                        <i class="bi bi-circle"></i><span>Calendar View</span>
-                    </a>
-                </li>
-                <li>
                     <a href="pending-requests.php">
                         <i class="bi bi-circle"></i><span>Pending Requests</span>
                     </a>
