@@ -4,10 +4,10 @@ include 'zon.php';
 $conn = new Con();
 $db = $conn->connect();
 
-$tables = ['users', 'bookings'];
+$tables = ['users', 'booking_info'];
 $columns = [
     'users' => ['user_id', 'surname', 'name', 'email', 'phone_number', 'user_role', 'created_at', 'town', 'region', 'age', 'marital', 'gender', 'education', 'orphan', 'disability', 'constituency', 'community', 'status'],
-    'bookings' => ['booking_id', 'user_id', 'counselor_id', 'booking_date', 'status', 'cancellation_reason', 'last_modified_at', 'approved_by_counselor', 'mode']
+    'booking_info' => ['booking_id', 'user_id', 'user_surname', 'user_name', 'user_email', 'user_phone_number', 'counselor_id', 'counselor_name', 'counselor_surname', 'booking_date', 'status', 'cancellation_reason', 'last_modified_at', 'approved_by_counselor', 'mode']
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -144,7 +144,7 @@ if (isset($_POST['export'])) {
                 </div>
                 <div class="mb-3">
                   <label for="join_condition" class="form-label">Join Condition (Optional)</label>
-                  <input type="text" class="form-control" id="join_condition" name="join_condition" placeholder="e.g., users.user_id = bookings.user_id">
+                  <input type="text" class="form-control" id="join_condition" name="join_condition" placeholder="e.g., users.user_id = booking_info.user_id">
                 </div>
                 <div class="mb-3">
                   <label for="where_condition" class="form-label">Where Condition (Optional)</label>
@@ -183,9 +183,9 @@ if (isset($_POST['export'])) {
                 <p>If you are not familiar with SQL, here are some example queries you can use:</p>
                 <ul>
                   <li><strong>Get all users:</strong> <code>SELECT * FROM users;</code></li>
-                  <li><strong>Get all bookings:</strong> <code>SELECT * FROM bookings;</code></li>
+                  <li><strong>Get all bookings:</strong> <code>SELECT * FROM booking_info;</code></li>
                   <li><strong>Get users by region:</strong> <code>SELECT * FROM users WHERE region = 'Hhohho';</code></li>
-                  <li><strong>Get bookings by status:</strong> <code>SELECT * FROM bookings WHERE status = 'confirmed';</code></li>
+                  <li><strong>Get bookings by status:</strong> <code>SELECT * FROM booking_info WHERE status = 'confirmed';</code></li>
                 </ul>
                 <h5>Available Tables and Fields</h5>
                 <p><strong>users</strong> table fields:</p>
@@ -211,11 +211,17 @@ if (isset($_POST['export'])) {
                   <li>community</li>
                   <li>status</li>
                 </ul>
-                <p><strong>bookings</strong> table fields:</p>
+                <p><strong>booking_info</strong> table fields:</p>
                 <ul>
                   <li>booking_id</li>
                   <li>user_id</li>
+                  <li>user_surname</li>
+                  <li>user_name</li>
+                  <li>user_email</li>
+                  <li>user_phone_number</li>
                   <li>counselor_id</li>
+                  <li>counselor_name</li>
+                  <li>counselor_surname</li>
                   <li>booking_date</li>
                   <li>status</li>
                   <li>cancellation_reason</li>
