@@ -6,20 +6,45 @@ $db = $conn->connect();
 // Start a session
 session_start();
 
-$userID = $_SESSION['counselor_id']; 
-// Fetch user's notes 
-$query = "SELECT note_id, title, body, created_at FROM notes WHERE user_id = ? ORDER BY created_at DESC"; 
-$stmt = $db->prepare($query); 
-$stmt->bind_param('i', $userID); 
-$stmt->execute(); 
-$result = $stmt->get_result(); 
+$noteID = isset($_GET['note_id']) ? intval($_GET['note_id']) : 0;
+$userID = $_SESSION['counselor_id'];
+
+// Fetch the note details
+$query = "SELECT note_id, title, body FROM notes WHERE note_id = ? AND user_id = ?";
+$stmt = $db->prepare($query);
+$stmt->bind_param('ii', $noteID, $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+$note = $result->fetch_assoc();
+$stmt->close();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title = $_POST['note_title'];
+    $body = $_POST['note_body'];
+
+    // Update the note in the database
+    $query = "UPDATE notes SET title = ?, body = ? WHERE note_id = ? AND user_id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('ssii', $title, $body, $noteID, $userID);
+
+    if ($stmt->execute()) {
+        $_SESSION['success'] = 'Note updated successfully!';
+        header('Location: notes.php');
+        exit();
+    } else {
+        $_SESSION['error'] = 'Failed to update note.';
+    }
+
+    $stmt->close();
+    $db->close();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Notes</title>
+    <title>Edit Note</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,44 +88,30 @@ $result = $stmt->get_result();
         <div class="content">
             <?php include('navbar.php'); ?>
 
-            <!-- Notes Start -->
+            <!-- Edit Note Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-12 mb-4" style="padding: 20px;">
-                        <h3>My Notes</h3>
-                        <form action="save_note.php" method="post">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="noteTitle" name="note_title" placeholder="Title" required>
-                                <label for="noteTitle">Title</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="noteBody" name="note_body" placeholder="Note Body" rows="5" required></textarea>
-                                <label for="noteBody">Note Body</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save Note</button>
-                        </form>
-
-                        <h3 class="mt-4">Previously Stored Notes</h3>
-                        <?php
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<div class='card mb-4'>";
-                                echo "<div class='card-body'>";
-                                echo "<h5 class='card-title'>" . htmlspecialchars($row['title']) . "</h5>";
-                                echo "<p class='card-text'>" . nl2br(htmlspecialchars($row['body'])) . "</p>";
-                                echo "<p class='card-text text-muted'>" . date('F j, Y, g:i a', strtotime($row['created_at'])) . "</p>";
-                                echo "<a href='edit_note.php?note_id=" . $row['note_id'] . "' class='btn btn-info'>Edit</a> ";
-                                echo "<a href='delete_note.php?note_id=" . $row['note_id'] . "' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this note?\");'>Delete</a>";
-                                echo "</div></div>";
-                            }
-                        } else {
-                            echo "<p>No notes available.</p>";
-                        }
-                        ?>
+                        <h3>Edit Note</h3>
+                        <?php if ($note): ?>
+                            <form action="edit_note.php?note_id=<?php echo $noteID; ?>" method="post">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="noteTitle" name="note_title" placeholder="Title" value="<?php echo htmlspecialchars($note['title']); ?>" required>
+                                    <label for="noteTitle">Title</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="noteBody" name="note_body" placeholder="Note Body" rows="5" required><?php echo htmlspecialchars($note['body']); ?></textarea>
+                                    <label for="noteBody">Note Body</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Note</button>
+                            </form>
+                        <?php else: ?>
+                            <p>Note not found.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-            <!-- Notes End -->
+            <!-- Edit Note End -->
 
             <?php include('footer.php'); ?>
         </div>
