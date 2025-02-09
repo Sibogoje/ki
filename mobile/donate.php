@@ -28,9 +28,28 @@
             width: 100%;
             z-index: 1000;
             background-color: black; /* Header background color is black */
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: green;
         }
-        header h1 a {
-            color: green !important; /* Header text color is green */
+        .back-button {
+            color: green;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            color: green;
+            flex-grow: 1;
+            text-align: center;
         }
         .main2 {
             margin-top: 120px; /* Adjust this value to ensure content appears below the header */
@@ -49,8 +68,9 @@
     </style>
 </head>
 <body>
- <header>
-        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
+<header>
+        <a href="../index.php" class="back-button py-2">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
     <main2 class="main2 container-fluid mt-2" style="padding-bottom: 30px">
@@ -103,11 +123,7 @@
         </form>
     </main2>
 
-    <footer class="bg-dark text-white text-center py-3">
-    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
-    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
-    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
-    </footer>
+<?php include "../footer.php"; ?>
 
     <script>
         document.getElementById('isPledge').addEventListener('change', function () {
