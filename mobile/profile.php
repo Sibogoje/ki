@@ -103,7 +103,7 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button"><img src="../arrowback.png" alt="Back">Back</a>
+        <a href="../index.php" class="back-button"><img src="arrowback.png" alt="Back">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
