@@ -215,14 +215,14 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
       </div>
       <div class="modal-body">
         <form id="editAppointmentForm" Method="POST"  Action="scripts/edit-appointment.php">
-          <input type="hidden" id="editAppointmentId" name="editAppointmentId">
+          <input type="hidden" id="editAppointmentId" name="editAppointmentId" disabled>
           <div class="mb-3">
             <label for="editClientSelect" class="form-label">Client</label>
-             <input type="text" class="form-control" id="editClientSelect" name="editClientSelect" required readonly>
+             <input type="text" class="form-control" id="editClientSelect" name="editClientSelect" required readonly disabled>
           </div>
           <div class="mb-3">
             <label for="editCounselorSelect" class="form-label">Counselor</label>
-             <input type="text" class="form-control" id="editCounselorSelect" name="editCounselorSelect" required readonly>
+             <input type="text" class="form-control" id="editCounselorSelect" name="editCounselorSelect" required readonly disabled>
           </div>
           <div class="mb-3">
             <label for="editAppointmentDate" class="form-label">Appointment Date and Time</label>
