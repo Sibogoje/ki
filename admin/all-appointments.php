@@ -139,7 +139,7 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
                    View
                     </a>
     
-                  <a href='scripts/delete-appointment.php?id={$row['booking_id']}' class='btn btn-danger btn-sm' onclick=\"return confirm('Are you sure you want to delete this appointment?');\">Delete</a>
+                  
                 </td>
               </tr>";
       }
@@ -210,7 +210,7 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editAppointmentModalLabel">Edit Appointment</h5>
+        <h5 class="modal-title" id="editAppointmentModalLabel">View Appointment</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
