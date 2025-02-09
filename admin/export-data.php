@@ -4,6 +4,11 @@ include 'zon.php';
 $conn = new Con();
 $db = $conn->connect();
 
+// Enable detailed error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $tables = ['users', 'booking_info'];
 $columns = [
     'users' => ['user_id', 'surname', 'name', 'email', 'phone_number', 'user_role', 'created_at', 'town', 'region', 'age', 'marital', 'gender', 'education', 'orphan', 'disability', 'constituency', 'community', 'status'],
