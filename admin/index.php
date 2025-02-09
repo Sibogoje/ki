@@ -16,40 +16,32 @@ $result = $db->query($sql);
 $row = $result->fetch_assoc();
 $totalCounselors = $row['user_id'];
 
-// Query to count the number of clients by region and gender
-$sql = "SELECT region, gender, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY region, gender";
+// Query to count the number of clients by region
+$sql = "SELECT region, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY region";
 $result = $db->query($sql);
 
 // Initialize data arrays
 $regions = [];
-$maleCounts = [];
-$femaleCounts = [];
+$clientCounts = [];
 
 // Fetch data and store it in arrays
 while ($row = $result->fetch_assoc()) {
-    $region = $row['region'];
-    $gender = $row['gender'];
-    $client_count = $row['client_count'];
-
-    if (!in_array($region, $regions)) {
-        $regions[] = $region;
-    }
-
-    if ($gender == 'Male') {
-        $maleCounts[$region] = $client_count;
-    } elseif ($gender == 'Female') {
-        $femaleCounts[$region] = $client_count;
-    }
+    $regions[] = $row['region'];
+    $clientCounts[] = $row['client_count'];
 }
 
-// Ensure all regions have data for both genders
-foreach ($regions as $region) {
-    if (!isset($maleCounts[$region])) {
-        $maleCounts[$region] = 0;
-    }
-    if (!isset($femaleCounts[$region])) {
-        $femaleCounts[$region] = 0;
-    }
+// Query to count the number of clients by gender
+$sql = "SELECT gender, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY gender";
+$result = $db->query($sql);
+
+// Initialize data arrays
+$genders = [];
+$genderCounts = [];
+
+// Fetch data and store it in arrays
+while ($row = $result->fetch_assoc()) {
+    $genders[] = $row['gender'];
+    $genderCounts[] = $row['client_count'];
 }
 
 // Query to fetch the latest 5 activities
@@ -172,26 +164,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <!-- End Active Counselors -->
 
 
-<!-- User Data -->
-<div class="col-lg-12">
+<!-- Clients by Region -->
+<div class="col-lg-6">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Client Registration</h5>
-      <div id="feedbackChart" style="min-height: 400px;" class="echart"></div>
+      <h5 class="card-title">Clients by Region</h5>
+      <div id="regionChart" style="min-height: 400px;" class="echart"></div>
 
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           // Get data from PHP to display dynamically
           var regions = <?php echo json_encode($regions); ?>;
-          var maleCounts = <?php echo json_encode(array_values($maleCounts)); ?>;
-          var femaleCounts = <?php echo json_encode(array_values($femaleCounts)); ?>;
+          var clientCounts = <?php echo json_encode($clientCounts); ?>;
 
-          echarts.init(document.querySelector("#feedbackChart")).setOption({
+          echarts.init(document.querySelector("#regionChart")).setOption({
             tooltip: {
               trigger: 'axis'
-            },
-            legend: {
-              data: ['Male', 'Female']
             },
             xAxis: {
               type: 'category',
@@ -200,24 +188,54 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             yAxis: {
               type: 'value'
             },
-            series: [
-              {
-                name: 'Male',
-                type: 'bar',
-                data: maleCounts // Use the male client counts for the bar data
-              },
-              {
-                name: 'Female',
-                type: 'bar',
-                data: femaleCounts // Use the female client counts for the bar data
-              }
-            ]
+            series: [{
+              name: 'Client Enrollment',
+              type: 'bar',
+              data: clientCounts // Use the client counts for the bar data
+            }]
           });
         });
       </script>
     </div>
   </div>
-</div><!-- End User Data -->
+</div><!-- End Clients by Region -->
+
+
+<!-- Clients by Gender -->
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Clients by Gender</h5>
+      <div id="genderChart" style="min-height: 400px;" class="echart"></div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Get data from PHP to display dynamically
+          var genders = <?php echo json_encode($genders); ?>;
+          var genderCounts = <?php echo json_encode($genderCounts); ?>;
+
+          echarts.init(document.querySelector("#genderChart")).setOption({
+            tooltip: {
+              trigger: 'axis'
+            },
+            xAxis: {
+              type: 'category',
+              data: genders // Use the genders as categories on the x-axis
+            },
+            yAxis: {
+              type: 'value'
+            },
+            series: [{
+              name: 'Client Enrollment',
+              type: 'bar',
+              data: genderCounts // Use the gender counts for the bar data
+            }]
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div><!-- End Clients by Gender -->
 
 
 <!-- Recent Activity -->
