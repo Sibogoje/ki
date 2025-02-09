@@ -18,12 +18,12 @@ $result = $db->query($query);
     <link rel="stylesheet" href="../styles.css?v=1.0">
 </head>
 <body>
-    <header>
-        <a href="../index.php" class="back-button py-2" style="text-decoration: none; display: flex; align-items: center;">
+    <header style="display: flex; align-items: center; background-color: black; padding: 10px;">
+        <a href="../index.php" class="back-button py-2" style="text-decoration: none; color: green; display: flex; align-items: center;">
             <span style="font-weight: bold; margin-right: 5px;">&lt;</span>
             <span>Back</span>
         </a>
-        <h2 style="flex-grow: 1; text-align: center; margin: 0;">A SAFE SPACE FOR YOU</h2>
+        <h2 style="flex-grow: 1; text-align: center; margin: 0; color: green;">A SAFE SPACE FOR YOU</h2>
     </header>
     <main>
         <section>
