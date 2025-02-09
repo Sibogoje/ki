@@ -217,7 +217,7 @@ if ($phone == null) {
         </div>
         <!-- Content End -->
     </main2>
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-black text-white text-center py-3">
     <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
     <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
     <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
