@@ -80,7 +80,7 @@
                         newsCard.className = 'col-md-12 mb-4';
                         newsCard.innerHTML = `
                             <div class="card">
-                                <img src="../${news.image_url}" class="card-img-top" alt="${news.title}" height="70px">
+                                <img src="../${news.image_url}" class="card-img-top" alt="${news.title}" height="150px">
                                 <div class="card-body">
                                     <h5 class="card-title">${news.title}</h5>
                                     <p class="card-text">${news.short_description}</p>
