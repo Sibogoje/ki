@@ -190,10 +190,11 @@ header h2 {
             <li><a href="mobile/messages.php">Messages</a></li>
             <li><a href="mobile/donate.php">Donate</a></li>
             <li><a href="mobile/profile.php">Settings</a></li>
+            <li><a href="mobile/resources.php">Resources</a></li>
             <?php if ($loggedIn) { ?>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="logout.php" style="width: 100%;">Logout</a></li>
             <?php } else { ?>
-                <li><a href="mobile/login-page.php">Sign In/Sign Up</a></li>
+                <li><a href="mobile/login-page.php" style="width: 100%;">Sign In/Sign Up</a></li>
             <?php } ?>
         </ul>
     </div>
@@ -223,13 +224,17 @@ header h2 {
                 <img src="settings.png" alt="Settings">
                 SETTINGS
             </a>
+            <a href="mobile/resources.php" class="section-button">
+                <img src="resources.png" alt="Resources">
+                RESOURCES
+            </a>
             <?php if ($loggedIn) { ?>
-                <a href="mobile/logout.php" class="section-button">
+                <a href="mobile/logout.php" class="section-button" style="width: 100%;">
                     <img src="sign in.png" alt="Logout">
                     LOGOUT
                 </a>
             <?php } else { ?>
-                <a href="mobile/login-page.php" class="section-button">
+                <a href="mobile/login-page.php" class="section-button" style="width: 100%;">
                     <img src="sign in.png" alt="Sign In/Sign Up">
                     SIGN IN/SIGN UP
                 </a>
