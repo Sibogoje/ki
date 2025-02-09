@@ -44,6 +44,20 @@ while ($row = $result->fetch_assoc()) {
     $genderCounts[] = $row['client_count'];
 }
 
+// Query to count the number of clients by age
+$sql = "SELECT age, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY age";
+$result = $db->query($sql);
+
+// Initialize data arrays
+$ages = [];
+$ageCounts = [];
+
+// Fetch data and store it in arrays
+while ($row = $result->fetch_assoc()) {
+    $ages[] = $row['age'];
+    $ageCounts[] = $row['client_count'];
+}
+
 // Query to fetch the latest 5 activities
 $sql = "SELECT al.timestamp, al.action_type, al.description, u.name 
         FROM activity_log al 
@@ -250,6 +264,50 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
   </div>
 </div><!-- End Clients by Gender -->
+
+
+<!-- Clients by Age -->
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Clients by Age</h5>
+      <div id="ageChart" style="min-height: 400px;" class="echart"></div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Get data from PHP to display dynamically
+          var ages = <?php echo json_encode($ages); ?>;
+          var ageCounts = <?php echo json_encode($ageCounts); ?>;
+
+          echarts.init(document.querySelector("#ageChart")).setOption({
+            tooltip: {
+              trigger: 'axis'
+            },
+            xAxis: {
+              type: 'category',
+              data: ages // Use the ages as categories on the x-axis
+            },
+            yAxis: {
+              type: 'value'
+            },
+            series: [{
+              name: 'Client Enrollment',
+              type: 'bar',
+              data: ageCounts, // Use the age counts for the bar data
+              itemStyle: {
+                color: function(params) {
+                  // Assign different colors to each bar
+                  var colorList = ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'];
+                  return colorList[params.dataIndex % colorList.length];
+                }
+              }
+            }]
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div><!-- End Clients by Age -->
 
 
 <!-- Recent Activity -->
