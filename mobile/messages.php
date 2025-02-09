@@ -7,8 +7,6 @@ session_start();
 $phone = $_SESSION['phone_number'] ?? '';
 $userID = $_SESSION['user_id'] ?? null;
 
-//$userID = 41; // Hardcoded for testing
-
 // Fetch chat list for the logged-in user
 $chats = [];
 if ($userID) {
@@ -55,8 +53,11 @@ if (isset($_SESSION['message_feedback'])) {
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: black; /* Header background color is black */
-            margin-bottom: 100px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: green;
         }
         .back-button {
             color: green;
@@ -77,11 +78,11 @@ if (isset($_SESSION['message_feedback'])) {
             text-align: center;
         }
         .main2 {
-            margin-top: 120px; /* Reduced margin to align content below the header */
+            margin-top: 80px; /* Adjust this value to ensure content appears below the header */
             margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
             width: 100%; /* Make the main container full width */
             color: black; /* Keep content text color black */
-            padding-top: 20px; /* Reduced padding to bring content closer to the top */
+            padding-top: 20px; /* Add padding to the top of the main container */
         }
         .chat-list {
             list-style: none;
@@ -145,12 +146,12 @@ if (isset($_SESSION['message_feedback'])) {
     </style>
 </head>
 <body>
- <header>
+<header>
         <a href="../index.php" class="back-button py-2">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
-    <main2 class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 80px;">
+    <main class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 80px;">
         <div class="row">
             <div class="col-12">
                 <ul class="chat-list">
@@ -173,7 +174,7 @@ if (isset($_SESSION['message_feedback'])) {
                 </ul>
             </div>
         </div>
-    </main2>
+    </main>
 
     <!-- Floating Action Button -->
     <div class="fab" data-bs-toggle="modal" data-bs-target="#newMessageModal">
