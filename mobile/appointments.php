@@ -157,10 +157,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <header>
-        <a href="../index.php" class="back-button py-2"> Back</a><h2> A SAFE SPACE FOR YOU</h2>
+<header>
+        <a href="../index.php" class="back-button py-2">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
-
     <main class="main2 container-fluid mt-2" style="padding-bottom: 30px">
         <div class="row">
             <?php if (!empty($bookings)): ?>
