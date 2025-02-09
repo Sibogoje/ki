@@ -49,9 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $client_name = $details['client_name'] . ' ' . $details['client_surname'];
                 $counselor_name = $details['counselor_name'] . ' ' . $details['counselor_surname'];
 
+                // Format booking date to remove seconds
+                $formattedBookingDate = date('Y-m-d H:i', strtotime($bookingDate));
+
                 // Send SMS via API
                 $apiKey = 'c2lib25pc29sc2liYW5kemVAZ21haWwuY29tLXJlYWxzbXM=';
-                $message = "Dear $client_name, Your appointment with counselor $counselor_name has been confirmed for $bookingDate. Mode: $mode. See you soon, keep safe!";
+                $message = "Dear $client_name, Your appointment with counselor $counselor_name has been confirmed for $formattedBookingDate. Mode: $mode. See you soon, keep safe!";
                 $url = "https://www.realsms.co.sz/urlSend?_apiKey=$apiKey&dest=$phone_number&message=" . urlencode($message);
 
                 // Use cURL to send the SMS
