@@ -146,25 +146,25 @@ if (isset($_POST['export'])) {
                 </div>
               <?php endif; ?>
               <form method="POST" action="export-data.php">
-                <div class="mb-3">
-                  <label for="tables" class="form-label">Select Tables</label>
-                  <select class="form-select" id="tables" name="tables[]" multiple>
-                    <?php foreach ($tables as $table): ?>
-                      <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="columns" class="form-label">Select Columns</label>
-                  <select class="form-select" id="columns" name="columns[]" multiple>
-                    <?php foreach ($columns as $table => $cols): ?>
-                      <optgroup label="<?php echo $table; ?>">
-                        <?php foreach ($cols as $col): ?>
-                          <option value="<?php echo $table . '.' . $col; ?>"><?php echo $col; ?></option>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="tables" class="form-label">Select Tables</label>
+                      <select class="form-select" id="tables" name="tables[]" multiple onchange="updateColumns()">
+                        <?php foreach ($tables as $table): ?>
+                          <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
                         <?php endforeach; ?>
-                      </optgroup>
-                    <?php endforeach; ?>
-                  </select>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="columns" class="form-label">Select Columns</label>
+                      <select class="form-select" id="columns" name="columns[]" multiple>
+                        <!-- Columns will be populated dynamically based on selected tables -->
+                      </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="mb-3">
                   <label for="join_condition" class="form-label">Join Condition (Optional)</label>
@@ -292,6 +292,30 @@ if (isset($_POST['export'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const columns = <?php echo json_encode($columns); ?>;
+
+    function updateColumns() {
+      const selectedTables = Array.from(document.getElementById('tables').selectedOptions).map(option => option.value);
+      const columnsSelect = document.getElementById('columns');
+      columnsSelect.innerHTML = '';
+
+      selectedTables.forEach(table => {
+        if (columns[table]) {
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = table;
+          columns[table].forEach(col => {
+            const option = document.createElement('option');
+            option.value = `${table}.${col}`;
+            option.textContent = col;
+            optgroup.appendChild(option);
+          });
+          columnsSelect.appendChild(optgroup);
+        }
+      });
+    }
+  </script>
 
 </body>
 
