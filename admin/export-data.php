@@ -4,8 +4,26 @@ include 'zon.php';
 $conn = new Con();
 $db = $conn->connect();
 
+$tables = ['users', 'bookings'];
+$columns = [
+    'users' => ['user_id', 'surname', 'name', 'email', 'phone_number', 'user_role', 'created_at', 'town', 'region', 'age', 'marital', 'gender', 'education', 'orphan', 'disability', 'constituency', 'community', 'status'],
+    'bookings' => ['booking_id', 'user_id', 'counselor_id', 'booking_date', 'status', 'cancellation_reason', 'last_modified_at', 'approved_by_counselor', 'mode']
+];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $query = $_POST['query'];
+    $selectedColumns = $_POST['columns'];
+    $selectedTables = $_POST['tables'];
+    $joinCondition = $_POST['join_condition'];
+    $whereCondition = $_POST['where_condition'];
+
+    $query = "SELECT " . implode(', ', $selectedColumns) . " FROM " . implode(', ', $selectedTables);
+    if (!empty($joinCondition)) {
+        $query .= " ON " . $joinCondition;
+    }
+    if (!empty($whereCondition)) {
+        $query .= " WHERE " . $whereCondition;
+    }
+
     $result = $db->query($query);
 
     if ($result) {
@@ -98,10 +116,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <?php endif; ?>
               <form method="POST" action="export-data.php">
                 <div class="mb-3">
-                  <label for="query" class="form-label">SQL Query</label>
-                  <textarea class="form-control" id="query" name="query" rows="5" placeholder="Enter your SQL query here..."></textarea>
+                  <label for="tables" class="form-label">Select Tables</label>
+                  <select class="form-select" id="tables" name="tables[]" multiple>
+                    <?php foreach ($tables as $table): ?>
+                      <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
+                    <?php endforeach; ?>
+                  </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Export to Excel</button>
+                <div class="mb-3">
+                  <label for="columns" class="form-label">Select Columns</label>
+                  <select class="form-select" id="columns" name="columns[]" multiple>
+                    <?php foreach ($columns as $table => $cols): ?>
+                      <optgroup label="<?php echo $table; ?>">
+                        <?php foreach ($cols as $col): ?>
+                          <option value="<?php echo $table . '.' . $col; ?>"><?php echo $col; ?></option>
+                        <?php endforeach; ?>
+                      </optgroup>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="join_condition" class="form-label">Join Condition (Optional)</label>
+                  <input type="text" class="form-control" id="join_condition" name="join_condition" placeholder="e.g., users.user_id = bookings.user_id">
+                </div>
+                <div class="mb-3">
+                  <label for="where_condition" class="form-label">Where Condition (Optional)</label>
+                  <input type="text" class="form-control" id="where_condition" name="where_condition" placeholder="e.g., users.region = 'Hhohho'">
+                </div>
+                <button type="submit" class="btn btn-primary">Run Query</button>
               </form>
               <div class="mt-4">
                 <h5>Hints for Writing SQL Queries</h5>
