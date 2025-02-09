@@ -27,23 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $db->query($query);
 
     if ($result) {
-        $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment;filename=' . $filename);
-
-        $output = fopen('php://output', 'w');
-        $columns = array_keys($result->fetch_assoc());
-        fputcsv($output, $columns);
-
-        $result->data_seek(0);
+        $data = [];
         while ($row = $result->fetch_assoc()) {
-            fputcsv($output, $row);
+            $data[] = $row;
         }
-        fclose($output);
-        exit();
+        $_SESSION['data'] = $data;
+        $_SESSION['columns'] = $selectedColumns;
     } else {
         $_SESSION['error'] = 'Invalid query or no results found.';
     }
+}
+
+if (isset($_POST['export'])) {
+    $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename=' . $filename);
+
+    $output = fopen('php://output', 'w');
+    fputcsv($output, $_SESSION['columns']);
+
+    foreach ($_SESSION['data'] as $row) {
+        fputcsv($output, $row);
+    }
+    fclose($output);
+    exit();
 }
 ?>
 
@@ -145,6 +152,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary">Run Query</button>
               </form>
+              <?php if (isset($_SESSION['data'])): ?>
+                <div class="mt-4">
+                  <h5>Query Results</h5>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <?php foreach ($_SESSION['columns'] as $column): ?>
+                          <th><?php echo htmlspecialchars($column); ?></th>
+                        <?php endforeach; ?>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($_SESSION['data'] as $row): ?>
+                        <tr>
+                          <?php foreach ($row as $cell): ?>
+                            <td><?php echo htmlspecialchars($cell); ?></td>
+                          <?php endforeach; ?>
+                        </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                  <form method="POST" action="export-data.php">
+                    <button type="submit" name="export" class="btn btn-success">Export to Excel</button>
+                  </form>
+                </div>
+              <?php endif; ?>
               <div class="mt-4">
                 <h5>Hints for Writing SQL Queries</h5>
                 <p>If you are not familiar with SQL, here are some example queries you can use:</p>
