@@ -53,6 +53,35 @@ $db->close();
     <link rel="icon" href="../icon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: green;
+        }
+        .back-button {
+            color: green;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            color: green;
+            flex-grow: 1;
+            text-align: center;
+        }
         .chat-container {
             margin-top: 80px;
             padding: 0 20px; /* Adjust padding to avoid excessive space */
@@ -117,7 +146,8 @@ $db->close();
 </head>
 <body>
     <header>
-        <h1><a href="messages.php" class="text-white text-decoration-none">&larr;</a> Chat</h1>
+        <a href="messages.php" class="back-button py-2">Back</a>
+        <h2>Chat</h2>
     </header>
 
     <main2 class="chat-container main2" id="chat-container">
