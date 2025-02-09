@@ -152,7 +152,7 @@ if (isset($_POST['export'])) {
                       <label for="tables" class="form-label">Select Tables</label>
                       <select class="form-select" id="tables" name="tables[]" multiple onchange="updateColumns()" style="height: 100%;">
                         <?php foreach ($tables as $table): ?>
-                          <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
+                          <option value="<?php echo htmlspecialchars($table); ?>"><?php echo htmlspecialchars($table); ?></option>
                         <?php endforeach; ?>
                       </select>
                     </div>
@@ -192,7 +192,7 @@ if (isset($_POST['export'])) {
                         <?php foreach ($_SESSION['data'] as $row): ?>
                           <tr>
                             <?php foreach ($row as $cell): ?>
-                              <td><?php echo htmlspecialchars($cell); ?></td>
+                              <td><?php echo htmlspecialchars($cell ?? ''); ?></td>
                             <?php endforeach; ?>
                           </tr>
                         <?php endforeach; ?>
