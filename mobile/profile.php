@@ -102,7 +102,7 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button">Back</a>
+        <a href="../index.php" class="back-button py-2">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
@@ -207,12 +207,7 @@ if ($phone == null) {
         </div>
         <!-- Content End -->
     </main2>
-    <footer class="bg-dark text-white text-center py-3">
-    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
-    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
-    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
-    </footer>
-
+    <?php include '../footer.php'; ?>
     <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog">
