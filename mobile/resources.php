@@ -24,6 +24,7 @@ $result = $db->query($query);
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-top: 100px;
         }
         .resource-item {
             display: flex;
