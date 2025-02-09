@@ -28,12 +28,6 @@ if ($userID) {
     }
     $stmt->close();
 }
-
-// Display feedback message if available
-if (isset($_SESSION['message_feedback'])) {
-    echo "<div class='alert alert-info' id='message-feedback'>{$_SESSION['message_feedback']}</div>";
-    unset($_SESSION['message_feedback']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,7 +140,14 @@ if (isset($_SESSION['message_feedback'])) {
     </style>
 </head>
 <body>
-<header>
+    <!-- Feedback message moved to the top -->
+    <?php
+    if (isset($_SESSION['message_feedback'])) {
+        echo "<div class='alert alert-info' id='message-feedback'>{$_SESSION['message_feedback']}</div>";
+        unset($_SESSION['message_feedback']);
+    }
+    ?>
+    <header>
         <a href="../index.php" class="back-button py-2">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
