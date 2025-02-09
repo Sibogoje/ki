@@ -165,7 +165,7 @@ header h2 {
 </head>
 <body>
     <div id="notification" class="notification"></div>
-<header>
+<header class="py-2">
     <div class="header-container">
         <div class="hamburger" onclick="toggleNavDrawer()">&#9776;</div>
         <h2>
@@ -237,11 +237,7 @@ header h2 {
         </section>
     </main2>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <img src="fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
-        <img src="icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
-        <img src="ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
-    </footer>
+<?php include "footer.php"; ?>
 
     <script>
         // Set the window.loggedIn variable based on PHP session
