@@ -8,23 +8,22 @@ if (!isset($_SESSION['user_id'])) {
 include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
-
+//$phone = $_GET['phone'];
+$phone = $_SESSION['phone_number'];
 if ($phone == null) {
     $query = "SELECT * FROM users WHERE user_id = ?";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('i', $_SESSION['user_id']);
+    $stmt->bind_param('i', $_SESSION['uid']);
     $stmt->execute();
     $userData = $stmt->get_result()->fetch_assoc();
-
+} else {
+    $query = "SELECT * FROM users WHERE phone_number = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('i', $phone);
+    $stmt->execute();
+    $userData = $stmt->get_result()->fetch_assoc();
+    $_SESSION['client_user_id'] = $userData['user_id'];
 }
-// } else {
-//     $query = "SELECT * FROM users WHERE user_id = ?";
-//     $stmt = $db->prepare($query);
-//     $stmt->bind_param('i', $phone);
-//     $stmt->execute();
-//     $userData = $stmt->get_result()->fetch_assoc();
-//     $_SESSION['client_user_id'] = $userData['user_id'];
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,36 +44,6 @@ if ($phone == null) {
             width: 100%;
             z-index: 1000;
             background-color: black;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            color: green;
-        }
-        header h2 {
-            margin: 0;
-            font-size: 16px;
-            color: green;
-            flex-grow: 1;
-            text-align: center;
-            
-        }
-        .back-button {
-            color: green;
-            font-size: 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        .back-button img {
-            width: 24px;
-            height: 24px;
-            margin-right: 5px;
-        }
-        .back-button::before {
-            content: '<';
-            font-weight: bold;
-            margin-right: 5px;
-            color: green;
         }
         main {
             margin-top: 60px; /* Adjust this value based on the height of your header */
@@ -112,8 +81,7 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button py-2">Back</a>
-        <h2>A SAFE SPACE FOR YOU</h2>
+        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
     </header>
 
     <main2 class="main2 container mt-1 mb-1">
@@ -217,10 +185,10 @@ if ($phone == null) {
         </div>
         <!-- Content End -->
     </main2>
-    <footer class="bg-black text-white text-center py-2">
-    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 40px;">
-    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 40px;">    
-    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 40px;">
+    <footer class="bg-dark text-white text-center py-3">
+    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
+    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
+    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
     </footer>
 
     <!-- Edit Profile Modal -->
