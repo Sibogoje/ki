@@ -16,30 +16,34 @@ $columns = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $selectedColumns = $_POST['columns'];
-    $selectedTables = $_POST['tables'];
-    $joinCondition = $_POST['join_condition'];
-    $whereCondition = $_POST['where_condition'];
+    $selectedColumns = isset($_POST['columns']) ? $_POST['columns'] : [];
+    $selectedTables = isset($_POST['tables']) ? $_POST['tables'] : [];
+    $joinCondition = isset($_POST['join_condition']) ? $_POST['join_condition'] : '';
+    $whereCondition = isset($_POST['where_condition']) ? $_POST['where_condition'] : '';
 
-    $query = "SELECT " . implode(', ', $selectedColumns) . " FROM " . implode(', ', $selectedTables);
-    if (!empty($joinCondition)) {
-        $query .= " ON " . $joinCondition;
-    }
-    if (!empty($whereCondition)) {
-        $query .= " WHERE " . $whereCondition;
-    }
-
-    $result = $db->query($query);
-
-    if ($result) {
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        $_SESSION['data'] = $data;
-        $_SESSION['columns'] = $selectedColumns;
+    if (empty($selectedColumns) || empty($selectedTables)) {
+        $_SESSION['error'] = 'Please select at least one column and one table.';
     } else {
-        $_SESSION['error'] = 'Invalid query or no results found.';
+        $query = "SELECT " . implode(', ', $selectedColumns) . " FROM " . implode(', ', $selectedTables);
+        if (!empty($joinCondition)) {
+            $query .= " ON " . $joinCondition;
+        }
+        if (!empty($whereCondition)) {
+            $query .= " WHERE " . $whereCondition;
+        }
+
+        $result = $db->query($query);
+
+        if ($result) {
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            $_SESSION['data'] = $data;
+            $_SESSION['columns'] = $selectedColumns;
+        } else {
+            $_SESSION['error'] = 'Invalid query or no results found.';
+        }
     }
 }
 
