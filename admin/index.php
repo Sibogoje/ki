@@ -240,7 +240,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
               trigger: 'axis'
             },
             legend: {
-              data: ['Client Enrollment']
+              data: ['Female', 'Male']
             },
             xAxis: {
               type: 'category',
