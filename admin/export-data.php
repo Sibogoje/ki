@@ -40,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if (isset($_POST['export'])) {
     try {
+        if (!isset($_SESSION['data']) || !isset($_SESSION['columns'])) {
+            throw new Exception('No data available for export.');
+        }
+
         $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
         header('Content-Type: text/csv');
         header('Content-Disposition: attachment;filename=' . $filename);
