@@ -226,7 +226,7 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
           </div>
           <div class="mb-3">
             <label for="editAppointmentDate" class="form-label">Appointment Date and Time</label>
-            <input type="datetime-local" class="form-control" id="editAppointmentDate" name="editAppointmentDate" required>
+            <input type="datetime-local" class="form-control" id="editAppointmentDate" name="editAppointmentDate" required disabled>
           </div>
           <div class="mb-3">
             <label for="editStatusSelect" class="form-label">Status</label>
