@@ -18,7 +18,7 @@ $result = $db->query($query);
     <link rel="stylesheet" href="../styles.css?v=1.0">
 </head>
 <body>
-    <header>
+    <header class="py-2">
         <h2>Resources</h2>
     </header>
     <main>
