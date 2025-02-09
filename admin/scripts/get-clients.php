@@ -3,7 +3,7 @@ include('../zon.php');
 $conn = new Con();
 $db = $conn->connect();
 
-$sql = "SELECT user_id, name FROM users";
+$sql = "SELECT user_id, name FROM users where user_role = 'client' ";
 $result = $db->query($sql);
 
 $clients = [];
