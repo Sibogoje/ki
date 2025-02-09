@@ -191,7 +191,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             series: [{
               name: 'Client Enrollment',
               type: 'bar',
-              data: clientCounts // Use the client counts for the bar data
+              data: clientCounts, // Use the client counts for the bar data
+              itemStyle: {
+                color: function(params) {
+                  // Assign different colors to each bar
+                  var colorList = ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'];
+                  return colorList[params.dataIndex % colorList.length];
+                }
+              }
             }]
           });
         });
@@ -228,7 +235,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             series: [{
               name: 'Client Enrollment',
               type: 'bar',
-              data: genderCounts // Use the gender counts for the bar data
+              data: genderCounts, // Use the gender counts for the bar data
+              itemStyle: {
+                color: function(params) {
+                  // Assign different colors to each bar
+                  var colorList = ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'];
+                  return colorList[params.dataIndex % colorList.length];
+                }
+              }
             }]
           });
         });
