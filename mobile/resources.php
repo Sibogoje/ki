@@ -54,7 +54,7 @@ $result = $db->query($query);
         </a>
         <h4 style="flex-grow: 1; text-align: center; margin: 0; color: green;">A SAFE SPACE FOR YOU</h4>
     </header>
-    <main>
+    <main2>
         <section>
             <?php if ($result->num_rows > 0) { ?>
                 <ul class="resource-list">
@@ -70,7 +70,7 @@ $result = $db->query($query);
                 <p>No resources available.</p>
             <?php } ?>
         </section>
-    </main>
+    </main2>
     <?php include "../footer.php"; ?>
     <script>
         function toggleNavDrawer() {
