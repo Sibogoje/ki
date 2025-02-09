@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Fetch existing bookings for the logged-in user
-$sql = "SELECT b.booking_id, u.name AS client_name, u.surname AS client_surname, b.booking_date, b.mode, b.status FROM bookings b
+$sql = "SELECT b.booking_id, u.name AS client_name, u.surname AS client_surname, u.phone_number, b.booking_date, b.mode, b.status FROM bookings b
         JOIN users u ON b.user_id = u.user_id
         WHERE b.counselor_id = ?";
 $stmt = $db->prepare($sql);
@@ -141,6 +141,7 @@ $db->close();
         <tr>
             <th>#</th>
             <th>Client</th>
+            <th>Phone Number</th>
             <th>Booking Date & Time</th>
             <th>Status</th>
             <th>Mode</th>
@@ -153,6 +154,7 @@ $db->close();
                 <tr>
                     <td><?php echo $row['booking_id']; ?></td>
                     <td><?php echo $row['client_name']." ".$row['client_surname']; ?></td>
+                    <td><?php echo $row['phone_number']; ?></td>
                     <td><?php echo $row['booking_date']; ?></td>
                     <td><?php echo $row['status']; ?></td>
                     <td><?php echo ucfirst($row['mode']); ?></td>
@@ -171,7 +173,7 @@ $db->close();
             <?php } 
         } else { ?>
             <tr>
-                <td colspan="6" class="text-center">You have no bookings yet.</td>
+                <td colspan="7" class="text-center">You have no bookings yet.</td>
             </tr>
         <?php } ?>
     </tbody>
