@@ -127,16 +127,8 @@ require_once 'session.php';
                         <i class="bi bi-circle"></i><span>All Appointments</span>
                     </a>
                 </li>
-                <li>
-                    <a href="pending-requests.php">
-                        <i class="bi bi-circle"></i><span>Pending Requests</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="reminders.php">
-                        <i class="bi bi-circle"></i><span>Reminders</span>
-                    </a>
-                </li>
+        
+               
             </ul>
         </li><!-- End Appointment Management Nav -->
 
