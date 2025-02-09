@@ -1,16 +1,28 @@
-<?php // Include the database connection file
+<?php
+// Include the database connection file
 include 'admin/zon.php';
 $conn = new Con();
 $db = $conn->connect();
-// Start a session
-session_start();
+
+// Get the news update ID from the query string
+$news_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+// Fetch the news update details from the database
+$query = "SELECT title, full_content, image_url, created_at FROM news_updates WHERE id = ?";
+$stmt = $db->prepare($query);
+$stmt->bind_param('i', $news_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$news = $result->fetch_assoc();
+$stmt->close();
+$db->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>News Detail</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -40,7 +52,6 @@ session_start();
 
 <body>
 
-
 <div class="container-xxl position-relative bg-white d-flex p-0">
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -60,41 +71,28 @@ session_start();
         include('navbar.php');
         ?>
 
-        <!-- Dashboard Start -->
-        <div class="container-fluid pt-4 px-4" >
+        <!-- News Detail Start -->
+        <div class="container-fluid pt-4 px-4">
             <div class="row bg-light rounded align-items-center justify-content-between mx-0" style="padding: 20px;">
-                
-                <!-- Content from news_updates table -->
                 <div class="col-md-12 mb-4">
-                    <h3>Latest News & Updates</h3>
-                    <?php
-                    // Fetch content from news_updates table
-                    $query = "SELECT id, title, short_description, full_content, image_url, created_at FROM news_updates ORDER BY created_at DESC LIMIT 5"; 
-                    $result = $db->query($query);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<div class='card mb-4'>";
-                            echo "<div class='card-body'>";
-                            if ($row['image_url']) {
-                                echo "<img src='../" . htmlspecialchars($row['image_url']) . "' class='card-img-top' alt='News Image'>";
-                            }
-                            echo "<h5 class='card-title'>" . htmlspecialchars($row['title']) . "</h5>";
-                            echo "<p class='card-text'>" . htmlspecialchars($row['short_description']) . "</p>";
-                            echo "<p class='card-text text-muted'>" . date('F j, Y, g:i a', strtotime($row['created_at'])) . "</p>";
-                            echo "<a href='news_detail.php?id=" . $row['id'] . "' class='btn btn-primary'>Read More</a>";
-                            echo "</div></div>";
-                        }
-                    } else {
-                        echo "<p>No news updates available.</p>";
-                    }
-
-                    $db->close();
-                    ?>
+                    <?php if ($news): ?>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <?php if ($news['image_url']): ?>
+                                    <img src="<?php echo htmlspecialchars($news['image_url']); ?>" class="card-img-top" alt="News Image">
+                                <?php endif; ?>
+                                <h5 class="card-title"><?php echo htmlspecialchars($news['title']); ?></h5>
+                                <p class="card-text"><?php echo nl2br(htmlspecialchars($news['full_content'])); ?></p>
+                                <p class="card-text text-muted"><?php echo date('F j, Y, g:i a', strtotime($news['created_at'])); ?></p>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <p>No news update found.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-        <!-- Dashboard End -->
+        <!-- News Detail End -->
 
         <?php include('footer.php'); ?>
     </div>
