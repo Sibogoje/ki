@@ -103,6 +103,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <button type="submit" class="btn btn-primary">Export to Excel</button>
               </form>
+              <div class="mt-4">
+                <h5>Hints for Writing SQL Queries</h5>
+                <p>If you are not familiar with SQL, here are some example queries you can use:</p>
+                <ul>
+                  <li><strong>Get all users:</strong> <code>SELECT * FROM users;</code></li>
+                  <li><strong>Get all bookings:</strong> <code>SELECT * FROM bookings;</code></li>
+                  <li><strong>Get users by region:</strong> <code>SELECT * FROM users WHERE region = 'Hhohho';</code></li>
+                  <li><strong>Get bookings by status:</strong> <code>SELECT * FROM bookings WHERE status = 'confirmed';</code></li>
+                </ul>
+                <h5>Available Tables and Fields</h5>
+                <p><strong>users</strong> table fields:</p>
+                <ul>
+                  <li>user_id</li>
+                  <li>surname</li>
+                  <li>name</li>
+                  <li>email</li>
+                  <li>phone_number</li>
+                  <li>user_role</li>
+                  <li>created_at</li>
+                  <li>password_hash</li>
+                  <li>client_username</li>
+                  <li>town</li>
+                  <li>region</li>
+                  <li>age</li>
+                  <li>marital</li>
+                  <li>gender</li>
+                  <li>education</li>
+                  <li>orphan</li>
+                  <li>disability</li>
+                  <li>constituency</li>
+                  <li>community</li>
+                  <li>status</li>
+                </ul>
+                <p><strong>bookings</strong> table fields:</p>
+                <ul>
+                  <li>booking_id</li>
+                  <li>user_id</li>
+                  <li>counselor_id</li>
+                  <li>booking_date</li>
+                  <li>status</li>
+                  <li>cancellation_reason</li>
+                  <li>last_modified_at</li>
+                  <li>approved_by_counselor</li>
+                  <li>mode</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
