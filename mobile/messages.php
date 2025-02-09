@@ -151,7 +151,7 @@ if ($userID) {
         unset($_SESSION['message_feedback']);
     }
     ?>
-    <main class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 80px;">
+    <main class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 0px;">
         <div class="row">
             <div class="col-12">
                 <ul class="chat-list">
