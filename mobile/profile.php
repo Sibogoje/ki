@@ -48,6 +48,7 @@ if ($phone == null) {
             display: flex;
             align-items: center;
             padding: 10px;
+            color: green;
         }
         header h2 {
             margin: 0;
