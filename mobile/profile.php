@@ -44,12 +44,33 @@ if ($phone == null) {
             width: 100%;
             z-index: 1000;
             background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: green;
+        }
+        .back-button {
+            color: green;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            color: green;
+            flex-grow: 1;
+            text-align: center;
         }
         main {
             margin-top: 60px; /* Adjust this value based on the height of your header */
             width: 100%; /* Make the main container full width */
             margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
-            
         }
         .back-button-container {
             position: relative;
@@ -81,7 +102,8 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
+        <a href="../index.php" class="back-button">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
     <main2 class="main2 container mt-1 mb-1">
