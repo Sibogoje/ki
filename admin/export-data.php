@@ -39,18 +39,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_POST['export'])) {
-    $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment;filename=' . $filename);
+    try {
+        $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment;filename=' . $filename);
 
-    $output = fopen('php://output', 'w');
-    fputcsv($output, $_SESSION['columns']);
+        $output = fopen('php://output', 'w');
+        if ($output === false) {
+            throw new Exception('Failed to open output stream');
+        }
 
-    foreach ($_SESSION['data'] as $row) {
-        fputcsv($output, $row);
+        fputcsv($output, $_SESSION['columns']);
+
+        foreach ($_SESSION['data'] as $row) {
+            fputcsv($output, $row);
+        }
+        fclose($output);
+        exit();
+    } catch (Exception $e) {
+        error_log('Error exporting data: ' . $e->getMessage());
+        $_SESSION['error'] = 'Failed to export data. Please try again later.';
+        header('Location: export-data.php');
+        exit();
     }
-    fclose($output);
-    exit();
 }
 ?>
 
