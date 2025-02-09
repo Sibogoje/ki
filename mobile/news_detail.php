@@ -7,7 +7,7 @@ session_start();
 $news_id = $_GET['id'];
 
 // Fetch news details
-$query = "SELECT * FROM news WHERE id = ?";
+$query = "SELECT * FROM news_updates WHERE id = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param('i', $news_id);
 $stmt->execute();
@@ -105,7 +105,7 @@ $db->close();
                     <img src="../<?php echo htmlspecialchars($news['image_url']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($news['title']); ?>">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($news['title']); ?></h5>
-                        <p class="card-text"><?php echo nl2br(htmlspecialchars($news['full_description'])); ?></p>
+                        <p class="card-text"><?php echo nl2br(htmlspecialchars($news['full_content'])); ?></p>
                     </div>
                 </div>
             </div>
