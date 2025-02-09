@@ -53,7 +53,7 @@ if ($phone == null) {
         header h2 {
             margin: 0;
             font-size: 16px;
-            color: white;
+            color: green;
             flex-grow: 1;
             text-align: center;
         }
