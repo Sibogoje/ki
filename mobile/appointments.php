@@ -146,6 +146,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             margin-right: 5px;
             color: green;
         }
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            color: green;
+            flex-grow: 1;
+            text-align: center;
+            
+        }
     </style>
 </head>
 <body>
