@@ -233,7 +233,7 @@ LEFT JOIN users counselor ON a.counselor_id = counselor.user_id;
             <input type="text" class="form-control" id="editStatusSelect" name="editStatusSelect" disabled>
             
           </div>
-          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <!-- <button type="submit" class="btn btn-primary">Save Changes</button> -->
         </form>
       </div>
     </div>
