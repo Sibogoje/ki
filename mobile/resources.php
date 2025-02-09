@@ -21,12 +21,17 @@ $result = $db->query($query);
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         .resource-item {
             display: flex;
             flex-direction: column;
             padding: 15px;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .resource-item h3 {
             margin: 0 0 5px 0;
@@ -38,11 +43,16 @@ $result = $db->query($query);
             color: #666;
         }
         .resource-item a {
-            color: #007bff;
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: green;
+            color: white;
             text-decoration: none;
+            border-radius: 5px;
         }
         .resource-item a:hover {
-            text-decoration: underline;
+            background-color: darkgreen;
         }
     </style>
 </head>
