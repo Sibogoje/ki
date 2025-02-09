@@ -139,11 +139,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             justify-content: center;
             min-height: 100vh;
         }
+
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+            color: green;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h><a href="../index.php" class="text-white text-decoration-none">&#x21A9; Back</a> A SAFE SPACE FOR YOU</h4>
+        <a href="../index.php" class="back-button py-2"> Back</a><h2> A SAFE SPACE FOR YOU</h2>
     </header>
 
     <main class="main2 container-fluid mt-2" style="padding-bottom: 30px">
@@ -224,11 +231,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3">
-    <img src="../fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 45px;">
-    <img src="../icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 45px;">    
-    <img src="../ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 45px;">
-    </footer>
+<?php 
+include "../footer.php"; ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

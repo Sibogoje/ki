@@ -1,5 +1,5 @@
-<footer>
-        <img src="../ki.png" alt="Image 1" width="45px">
-        <img src="../icon.png" alt="Image 2" width="45px">
-        <img src="../fnb.png" alt="Image 3" width="45px">
-</footer>
+<footer class="bg-dark text-white text-center py-2">
+    <img src="fnb foundation.png" alt="Image 3" class="mx-2" style="width: 64px; height: 40px;">
+    <img src="icon.png" alt="Image 2" class="mx-2" style="width: 45px; height: 40px;">    
+    <img src="ki.png" alt="Image 1" class="mx-2" style="width: 45px; height: 40px;">
+    </footer>
