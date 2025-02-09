@@ -8,15 +8,22 @@ if (!isset($_SESSION['user_id'])) {
 include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
-
-$user_id = $_SESSION['user_id'];
-$query = "SELECT * FROM users WHERE user_id = ?";
-$stmt = $db->prepare($query);
-$stmt->bind_param('i', $user_id);
-$stmt->execute();
-$userData = $stmt->get_result()->fetch_assoc();
-$stmt->close();
-$db->close();
+//$phone = $_GET['phone'];
+$phone = $_SESSION['phone_number'];
+if ($phone == null) {
+    $query = "SELECT * FROM users WHERE user_id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('i', $_SESSION['uid']);
+    $stmt->execute();
+    $userData = $stmt->get_result()->fetch_assoc();
+} else {
+    $query = "SELECT * FROM users WHERE phone_number = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param('i', $phone);
+    $stmt->execute();
+    $userData = $stmt->get_result()->fetch_assoc();
+    $_SESSION['client_user_id'] = $userData['user_id'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +62,9 @@ $db->close();
             display: flex;
             align-items: center;
         }
-        .back-button::before {
-            content: '\2190'; /* Unicode for left arrow */
+        .back-button img {
+            width: 24px;
+            height: 24px;
             margin-right: 5px;
         }
         main {
@@ -95,7 +103,7 @@ $db->close();
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button">Back</a>
+        <a href="../index.php" class="back-button"><img src="../ios-back-arrow.png" alt="Back">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
