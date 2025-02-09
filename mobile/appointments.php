@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <header>
-        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9; Back</a> A SAFE SPACE FOR YOU</h2>
+        <h><a href="../index.php" class="text-white text-decoration-none">&#x21A9; Back</a> A SAFE SPACE FOR YOU</h4>
     </header>
 
     <main class="main2 container-fluid mt-2" style="padding-bottom: 30px">
