@@ -224,7 +224,7 @@ header h2 {
                 <img src="settings.png" alt="Settings">
                 SETTINGS
             </a>
-            <a href="mobile/resources.php" class="section-button">
+            <a href="file-and-folder.php" class="section-button">
                 <img src="resources.png" alt="Resources">
                 RESOURCES
             </a>
