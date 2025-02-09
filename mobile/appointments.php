@@ -144,11 +144,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             min-height: 100vh;
         }
 
+        .back-button {
+            color: green;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
         .back-button::before {
             content: '<';
             font-weight: bold;
             margin-right: 5px;
-            color: green;
         }
         header h2 {
             margin: 0;
