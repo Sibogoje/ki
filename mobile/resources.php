@@ -19,8 +19,11 @@ $result = $db->query($query);
 </head>
 <body>
     <header>
-        <a href="../index.php" class="back-button py-2">Back</a>
-        <h2>A SAFE SPACE FOR YOU</h2>
+        <a href="../index.php" class="back-button py-2" style="text-decoration: none; display: flex; align-items: center;">
+            <span style="font-weight: bold; margin-right: 5px;">&lt;</span>
+            <span>Back</span>
+        </a>
+        <h2 style="flex-grow: 1; text-align: center; margin: 0;">A SAFE SPACE FOR YOU</h2>
     </header>
     <main>
         <section>
