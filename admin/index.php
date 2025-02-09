@@ -193,22 +193,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
           echarts.init(document.querySelector("#regionChart")).setOption({
             tooltip: {
-              trigger: 'axis'
+              trigger: 'item'
             },
-            xAxis: {
-              type: 'category',
-              data: regions // Use the regions as categories on the x-axis
-            },
-            yAxis: {
-              type: 'value'
+            legend: {
+              orient: 'vertical',
+              left: 'left'
             },
             series: [{
               name: 'Client Enrollment',
-              type: 'bar',
-              data: clientCounts, // Use the client counts for the bar data
+              type: 'pie',
+              radius: '50%',
+              data: regions.map((region, index) => {
+                return { value: clientCounts[index], name: region };
+              }),
               itemStyle: {
                 color: function(params) {
-                  // Assign different colors to each bar
+                  // Assign different colors to each slice
                   var colorList = ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'];
                   return colorList[params.dataIndex % colorList.length];
                 }
@@ -238,6 +238,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echarts.init(document.querySelector("#genderChart")).setOption({
             tooltip: {
               trigger: 'axis'
+            },
+            legend: {
+              data: ['Client Enrollment']
             },
             xAxis: {
               type: 'category',
@@ -282,6 +285,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echarts.init(document.querySelector("#ageChart")).setOption({
             tooltip: {
               trigger: 'axis'
+            },
+            legend: {
+              data: ['Client Enrollment']
             },
             xAxis: {
               type: 'category',
