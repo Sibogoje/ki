@@ -81,7 +81,7 @@
             <p>If you have any questions or need further assistance, feel free to reach out to us via the following contact details:</p>
             <div class="d-flex align-items-center">
               <i class="bi bi-envelope"></i>
-              <p class="ps-2">siboniso@technoprint.net</p>
+              <p class="ps-2">siboniso@Kwakha Indvodzat.net</p>
             </div>
             <div class="d-flex align-items-center mt-3">
               <i class="bi bi-phone"></i>
