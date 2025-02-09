@@ -1,3 +1,34 @@
+<?php
+session_start();
+include 'zon.php';
+$conn = new Con();
+$db = $conn->connect();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $query = $_POST['query'];
+    $result = $db->query($query);
+
+    if ($result) {
+        $filename = "export_" . date("Y-m-d_H-i-s") . ".csv";
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment;filename=' . $filename);
+
+        $output = fopen('php://output', 'w');
+        $columns = array_keys($result->fetch_assoc());
+        fputcsv($output, $columns);
+
+        $result->data_seek(0);
+        while ($row = $result->fetch_assoc()) {
+            fputcsv($output, $row);
+        }
+        fclose($output);
+        exit();
+    } else {
+        $_SESSION['error'] = 'Invalid query or no results found.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,23 +72,44 @@
 <body>
 
   <!-- ======= Header ======= -->
-<?php include 'header.php' ?>
+  <?php include 'header.php'; ?>
 
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Data Management</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item active">Data Export</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-       <main id="main" class="main">
-        <div class="pagetitle">
-            <h1>Data Management</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">Data Export</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-        
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Custom Query Export</h5>
+              <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger">
+                  <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                </div>
+              <?php endif; ?>
+              <form method="POST" action="export-data.php">
+                <div class="mb-3">
+                  <label for="query" class="form-label">SQL Query</label>
+                  <textarea class="form-control" id="query" name="query" rows="5" placeholder="Enter your SQL query here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Export to Excel</button>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
- </main>
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
