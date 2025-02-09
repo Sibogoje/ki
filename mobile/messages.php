@@ -73,7 +73,7 @@ if ($userID) {
         }
         .main2 {
             margin-top: 80px; /* Adjust this value to ensure content appears below the header */
-            margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
+            margin-bottom: 10px; /* Add margin to ensure content is not hidden behind the footer */
             width: 100%; /* Make the main container full width */
             color: black; /* Keep content text color black */
             padding-top: 20px; /* Add padding to the top of the main container */
