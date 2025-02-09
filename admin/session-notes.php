@@ -30,11 +30,11 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: Kwakha Indvodzat
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Template Name: Kwakha Indvodza
+  * Template URL: https://TechnoPrint.com/nice-admin-bootstrap-admin-html-template/
   * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
+  * Author: TechnoPrint.com
+  * License: https://TechnoPrint.com/license/
   ======================================================== -->
 </head>
 
@@ -163,10 +163,10 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Kwakha Indvodzat</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Kwakha Indvodza</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://TechnoPrint.com/">TechnoPrint</a>
     </div>
   </footer><!-- End Footer -->
 

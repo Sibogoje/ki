@@ -42,11 +42,11 @@ $result = mysqli_query($db, $query);
   <link href="assets/css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <!-- =======================================================
-  * Template Name: Kwakha Indvodzat
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Template Name: Kwakha Indvodza
+  * Template URL: https://TechnoPrint.com/nice-admin-bootstrap-admin-html-template/
   * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
+  * Author: TechnoPrint.com
+  * License: https://TechnoPrint.com/license/
   ======================================================== -->
   
   <style>

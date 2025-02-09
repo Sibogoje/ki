@@ -1,7 +1,7 @@
 /**
 * PHP Email Form Validation - v3.9
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
+* URL: https://TechnoPrint.com/php-email-form/
+* Author: TechnoPrint.com
 */
 (function () {
   "use strict";

@@ -70,10 +70,10 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Kwakha Indvodzat</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Kwakha Indvodza</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://TechnoPrint.com/">TechnoPrint</a>
     </div>
   </footer><!-- End Footer -->
 
