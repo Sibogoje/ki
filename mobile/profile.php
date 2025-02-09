@@ -8,22 +8,23 @@ if (!isset($_SESSION['user_id'])) {
 include '../zon.php';
 $conn = new Con();
 $db = $conn->connect();
-//$phone = $_GET['phone'];
-$phone = $_SESSION['phone_number'];
+
 if ($phone == null) {
     $query = "SELECT * FROM users WHERE user_id = ?";
     $stmt = $db->prepare($query);
-    $stmt->bind_param('i', $_SESSION['uid']);
+    $stmt->bind_param('i', $_SESSION['user_id']);
     $stmt->execute();
     $userData = $stmt->get_result()->fetch_assoc();
-} else {
-    $query = "SELECT * FROM users WHERE phone_number = ?";
-    $stmt = $db->prepare($query);
-    $stmt->bind_param('i', $phone);
-    $stmt->execute();
-    $userData = $stmt->get_result()->fetch_assoc();
-    $_SESSION['client_user_id'] = $userData['user_id'];
+
 }
+// } else {
+//     $query = "SELECT * FROM users WHERE user_id = ?";
+//     $stmt = $db->prepare($query);
+//     $stmt->bind_param('i', $phone);
+//     $stmt->execute();
+//     $userData = $stmt->get_result()->fetch_assoc();
+//     $_SESSION['client_user_id'] = $userData['user_id'];
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
