@@ -6,8 +6,8 @@ require_once 'session.php';
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="https://ki.liquag.com/admin/index.php" class="logo d-flex align-items-center">
-        <img src="https://ki.liquag.com/admin/assets/img/logo.png" alt="">
+      <a href="admin/index.php" class="logo d-flex align-items-center">
+        <img src="admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">Kwakha Indvodza</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -43,7 +43,7 @@ require_once 'session.php';
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="https://ki.liquag.com/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $username; ?></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -54,7 +54,7 @@ require_once 'session.php';
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="https://ki.liquag.com/admin/users-profile.php">
+              <a class="dropdown-item d-flex align-items-center" href="admin/users-profile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -65,7 +65,7 @@ require_once 'session.php';
 
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="https://ki.liquag.com/admin/logout.php">
+              <a class="dropdown-item d-flex align-items-center" href="admin/logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -86,7 +86,7 @@ require_once 'session.php';
 
         <!-- Dashboard -->
         <li class="nav-item">
-            <a class="nav-link " href="https://ki.liquag.com/admin/index.php">
+            <a class="nav-link " href="admin/index.php">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -99,17 +99,17 @@ require_once 'session.php';
             </a>
             <ul id="user-management-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/clients.php">
+                    <a href="admin/clients.php">
                         <i class="bi bi-circle"></i><span>All Users</span>
                     </a>
                 </li>
                 <!--<li>-->
-                <!--    <a href="https://ki.liquag.com/admin/counselors.php">-->
+                <!--    <a href="admin/counselors.php">-->
                 <!--        <i class="bi bi-circle"></i><span>Counselors</span>-->
                 <!--    </a>-->
                 <!--</li>-->
                 <li>
-                    <a href="https://ki.liquag.com/admin/roles-permissions.php">
+                    <a href="admin/roles-permissions.php">
                         <i class="bi bi-circle"></i><span>Password Change</span>
                     </a>
                 </li>
@@ -123,22 +123,22 @@ require_once 'session.php';
             </a>
             <ul id="appointments-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/all-appointments.php">
+                    <a href="admin/all-appointments.php">
                         <i class="bi bi-circle"></i><span>All Appointments</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/calendar-view.php">
+                    <a href="admin/calendar-view.php">
                         <i class="bi bi-circle"></i><span>Calendar View</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/pending-requests.php">
+                    <a href="admin/pending-requests.php">
                         <i class="bi bi-circle"></i><span>Pending Requests</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/reminders.php">
+                    <a href="admin/reminders.php">
                         <i class="bi bi-circle"></i><span>Reminders</span>
                     </a>
                 </li>
@@ -152,12 +152,12 @@ require_once 'session.php';
         <!--    </a>-->
         <!--    <ul id="session-management-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
         <!--        <li>-->
-        <!--            <a href="https://ki.liquag.com/admin/session-notes.php">-->
+        <!--            <a href="admin/session-notes.php">-->
         <!--                <i class="bi bi-circle"></i><span>Session Notes</span>-->
         <!--            </a>-->
         <!--        </li>-->
         <!--        <li>-->
-        <!--            <a href="https://ki.liquag.com/admin/progress-tracking.php">-->
+        <!--            <a href="admin/progress-tracking.php">-->
         <!--                <i class="bi bi-circle"></i><span>Progress Tracking</span>-->
         <!--            </a>-->
         <!--        </li>-->
@@ -172,7 +172,7 @@ require_once 'session.php';
             </a>
             <ul id="communication-tools-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/messages.php">
+                    <a href="admin/messages.php">
                         <i class="bi bi-circle"></i><span>Messages</span>
                     </a>
                 </li>
@@ -182,7 +182,7 @@ require_once 'session.php';
                 <!--    </a>-->
                 <!--</li>-->
                 <li>
-                    <a href="https://ki.liquag.com/admin/notifications.php">
+                    <a href="admin/notifications.php">
                         <i class="bi bi-circle"></i><span>Notifications</span>
                     </a>
                 </li>
@@ -196,7 +196,7 @@ require_once 'session.php';
             </a>
             <ul id="content-management-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/resource-library.php">
+                    <a href="admin/resource-library.php">
                         <i class="bi bi-circle"></i><span>Resource Library</span>
                     </a>
                 </li>
@@ -220,17 +220,17 @@ require_once 'session.php';
             </a>
             <ul id="analytics-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/usage-metrics.php">
+                    <a href="admin/usage-metrics.php">
                         <i class="bi bi-circle"></i><span>Usage Metrics</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/outcome-tracking.php">
+                    <a href="admin/outcome-tracking.php">
                         <i class="bi bi-circle"></i><span>Outcome Tracking</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/export-data.php">
+                    <a href="admin/export-data.php">
                         <i class="bi bi-circle"></i><span>Export Data</span>
                     </a>
                 </li>
@@ -268,12 +268,12 @@ require_once 'session.php';
             </a>
             <ul id="help-support-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://ki.liquag.com/admin/help-center.php">
+                    <a href="admin/help-center.php">
                         <i class="bi bi-circle"></i><span>Help Center</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://ki.liquag.com/admin/contact-support.php">
+                    <a href="admin/contact-support.php">
                         <i class="bi bi-circle"></i><span>Contact Support</span>
                     </a>
                 </li>
