@@ -56,7 +56,7 @@ if ($phone == null) {
             color: green;
             flex-grow: 1;
             text-align: center;
-            padding: 15px;
+            
         }
         .back-button {
             color: green;
@@ -112,7 +112,7 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button">Back</a>
+        <a href="../index.php" class="back-button py-2">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
