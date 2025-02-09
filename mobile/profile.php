@@ -73,6 +73,7 @@ if ($phone == null) {
             content: '<';
             font-weight: bold;
             margin-right: 5px;
+            color: green;
         }
         main {
             margin-top: 60px; /* Adjust this value based on the height of your header */
