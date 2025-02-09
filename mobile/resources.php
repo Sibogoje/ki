@@ -16,6 +16,35 @@ $result = $db->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources</title>
     <link rel="stylesheet" href="../styles.css?v=1.0">
+    <style>
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .resource-item {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .resource-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        .resource-item p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .resource-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .resource-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header style="display: flex; align-items: center; background-color: black; ">
@@ -28,9 +57,9 @@ $result = $db->query($query);
     <main>
         <section>
             <?php if ($result->num_rows > 0) { ?>
-                <ul>
+                <ul class="resource-list">
                     <?php while ($row = $result->fetch_assoc()) { ?>
-                        <li>
+                        <li class="resource-item">
                             <h3><?php echo htmlspecialchars($row['title']); ?></h3>
                             <p><?php echo htmlspecialchars($row['description']); ?></p>
                             <a href="../uploads/<?php echo htmlspecialchars($row['file']); ?>" download>Download</a>
