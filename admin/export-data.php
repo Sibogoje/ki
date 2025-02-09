@@ -148,9 +148,9 @@ if (isset($_POST['export'])) {
               <form method="POST" action="export-data.php">
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="mb-3" style="height: 200px;">
+                    <div class="mb-3" style="height: 300px;">
                       <label for="tables" class="form-label">Select Tables</label>
-                      <select class="form-select" id="tables" name="tables[]" multiple onchange="updateColumns()">
+                      <select class="form-select" id="tables" name="tables[]" multiple onchange="updateColumns()" style="height: 100%;">
                         <?php foreach ($tables as $table): ?>
                           <option value="<?php echo $table; ?>"><?php echo $table; ?></option>
                         <?php endforeach; ?>
@@ -158,9 +158,9 @@ if (isset($_POST['export'])) {
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="mb-3" style="height: 200px;">
+                    <div class="mb-3" style="height: 300px;">
                       <label for="columns" class="form-label">Select Columns</label>
-                      <select class="form-select" id="columns" name="columns[]" multiple>
+                      <select class="form-select" id="columns" name="columns[]" multiple style="height: 100%;">
                         <!-- Columns will be populated dynamically based on selected tables -->
                       </select>
                     </div>
