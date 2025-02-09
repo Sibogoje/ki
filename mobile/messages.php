@@ -140,18 +140,17 @@ if ($userID) {
     </style>
 </head>
 <body>
-    <!-- Feedback message moved to the top -->
+    <header>
+        <a href="../index.php" class="back-button py-2">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
+    </header>
+    <!-- Feedback message moved just below the header -->
     <?php
     if (isset($_SESSION['message_feedback'])) {
         echo "<div class='alert alert-info' id='message-feedback'>{$_SESSION['message_feedback']}</div>";
         unset($_SESSION['message_feedback']);
     }
     ?>
-    <header>
-        <a href="../index.php" class="back-button py-2">Back</a>
-        <h2>A SAFE SPACE FOR YOU</h2>
-    </header>
-
     <main class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 80px;">
         <div class="row">
             <div class="col-12">
