@@ -68,6 +68,11 @@ if ($phone == null) {
             height: 24px;
             margin-right: 5px;
         }
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+        }
         main {
             margin-top: 60px; /* Adjust this value based on the height of your header */
             width: 100%; /* Make the main container full width */
@@ -104,7 +109,7 @@ if ($phone == null) {
 </head>
 <body>
  <header>
-        <a href="../index.php" class="back-button"><img src="../white-arrow.png" alt="Back">Back</a>
+        <a href="../index.php" class="back-button">Back</a>
         <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
