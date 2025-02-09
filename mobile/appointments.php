@@ -89,7 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: black; /* Header background color is black */
+            background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: green;
         }
         header h1 a {
             color: green !important; /* Header text color is green */
