@@ -147,7 +147,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="ps-3">
           <!-- Display total appointments dynamically -->
           <h6><?php echo $totalAppointments; ?></h6>
-          <span class="text-success small pt-1 fw-bold">5%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+         
         </div>
       </div>
     </div>
@@ -169,7 +169,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="ps-3">
           <!-- Display total counselors dynamically -->
           <h6><?php echo $totalCounselors; ?></h6>
-          <span class="text-success small pt-1 fw-bold">2%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+         
         </div>
       </div>
     </div>
