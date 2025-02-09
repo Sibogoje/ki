@@ -31,22 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         // If status is confirmed, send SMS to client
         if ($status === 'confirmed') {
-            // Fetch client phone number
-            $query = "SELECT u.phone_number, u.name, u.surname FROM bookings b JOIN users u ON b.user_id = u.user_id WHERE b.booking_id = ?";
+            // Fetch client and counselor details
+            $query = "SELECT u.phone_number, u.name AS client_name, u.surname AS client_surname, c.name AS counselor_name, c.surname AS counselor_surname 
+                      FROM bookings b 
+                      JOIN users u ON b.user_id = u.user_id 
+                      JOIN users c ON b.counselor_id = c.user_id 
+                      WHERE b.booking_id = ?";
             $stmt = $db->prepare($query);
             $stmt->bind_param('i', $bookingId);
             $stmt->execute();
             $result = $stmt->get_result();
-            $client = $result->fetch_assoc();
+            $details = $result->fetch_assoc();
             $stmt->close();
 
-            if ($client) {
-                $phone_number = $client['phone_number'];
-                $client_name = $client['name'] . ' ' . $client['surname'];
+            if ($details) {
+                $phone_number = $details['phone_number'];
+                $client_name = $details['client_name'] . ' ' . $details['client_surname'];
+                $counselor_name = $details['counselor_name'] . ' ' . $details['counselor_surname'];
 
                 // Send SMS via API
                 $apiKey = 'c2lib25pc29sc2liYW5kemVAZ21haWwuY29tLXJlYWxzbXM=';
-                $message = "Dear $client_name, your booking has been confirmed. Date: $bookingDate, Mode: $mode.";
+                $message = "Dear $client_name, Your appointment with counselor $counselor_name has been confirmed for $bookingDate. Mode: $mode. See you soon, keep safe!";
                 $url = "https://www.realsms.co.sz/urlSend?_apiKey=$apiKey&dest=$phone_number&message=" . urlencode($message);
 
                 // Use cURL to send the SMS
