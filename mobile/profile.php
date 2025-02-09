@@ -37,6 +37,27 @@ $db->close();
             width: 100%;
             z-index: 1000;
             background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 16px;
+            color: white;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .back-button {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back-button::before {
+            content: '\2190'; /* Unicode for left arrow */
+            margin-right: 5px;
         }
         main {
             margin-top: 60px; /* Adjust this value based on the height of your header */
@@ -74,7 +95,8 @@ $db->close();
 </head>
 <body>
  <header>
-        <h2><a href="../index.php" class="text-white text-decoration-none">&#x21A9;</a> A SAFE SPACE FOR YOU</h2>
+        <a href="../index.php" class="back-button">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
 
     <main2 class="main2 container mt-1 mb-1">
