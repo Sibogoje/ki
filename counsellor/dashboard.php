@@ -77,7 +77,7 @@ session_start();
                             echo "<div class='card mb-4'>";
                             echo "<div class='card-body'>";
                             if ($row['image_url']) {
-                                echo "<img src='../" . htmlspecialchars($row['image_url']) . "' class='card-img-top' alt='News Image'>";
+                                echo "<img src='../" . htmlspecialchars($row['image_url']) . "' class='card-img-top' alt='News Image' style='height: 100px; object-fit: cover;'>";
                             }
                             echo "<h5 class='card-title'>" . htmlspecialchars($row['title']) . "</h5>";
                             echo "<p class='card-text'>" . htmlspecialchars($row['short_description']) . "</p>";
