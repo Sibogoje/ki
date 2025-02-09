@@ -16,18 +16,40 @@ $result = $db->query($sql);
 $row = $result->fetch_assoc();
 $totalCounselors = $row['user_id'];
 
-// Query to count the number of clients by region
-$sql = "SELECT region, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY region";
+// Query to count the number of clients by region and gender
+$sql = "SELECT region, gender, COUNT(*) AS client_count FROM users WHERE user_role = 'client' GROUP BY region, gender";
 $result = $db->query($sql);
 
 // Initialize data arrays
 $regions = [];
-$clientCounts = [];
+$maleCounts = [];
+$femaleCounts = [];
 
 // Fetch data and store it in arrays
 while ($row = $result->fetch_assoc()) {
-    $regions[] = $row['region'];
-    $clientCounts[] = $row['client_count'];
+    $region = $row['region'];
+    $gender = $row['gender'];
+    $client_count = $row['client_count'];
+
+    if (!in_array($region, $regions)) {
+        $regions[] = $region;
+    }
+
+    if ($gender == 'Male') {
+        $maleCounts[$region] = $client_count;
+    } elseif ($gender == 'Female') {
+        $femaleCounts[$region] = $client_count;
+    }
+}
+
+// Ensure all regions have data for both genders
+foreach ($regions as $region) {
+    if (!isset($maleCounts[$region])) {
+        $maleCounts[$region] = 0;
+    }
+    if (!isset($femaleCounts[$region])) {
+        $femaleCounts[$region] = 0;
+    }
 }
 
 // Query to fetch the latest 5 activities
@@ -154,21 +176,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <div class="col-lg-12">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">User Feedback</h5>
+      <h5 class="card-title">Client Registration</h5>
       <div id="feedbackChart" style="min-height: 400px;" class="echart"></div>
 
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           // Get data from PHP to display dynamically
           var regions = <?php echo json_encode($regions); ?>;
-          var clientCounts = <?php echo json_encode($clientCounts); ?>;
+          var maleCounts = <?php echo json_encode(array_values($maleCounts)); ?>;
+          var femaleCounts = <?php echo json_encode(array_values($femaleCounts)); ?>;
 
           echarts.init(document.querySelector("#feedbackChart")).setOption({
             tooltip: {
               trigger: 'axis'
             },
             legend: {
-              data: ['Client Enrollment']
+              data: ['Male', 'Female']
             },
             xAxis: {
               type: 'category',
@@ -177,11 +200,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             yAxis: {
               type: 'value'
             },
-            series: [{
-              name: 'Client Enrollment',
-              type: 'bar',
-              data: clientCounts // Use the client counts for the bar data
-            }]
+            series: [
+              {
+                name: 'Male',
+                type: 'bar',
+                data: maleCounts // Use the male client counts for the bar data
+              },
+              {
+                name: 'Female',
+                type: 'bar',
+                data: femaleCounts // Use the female client counts for the bar data
+              }
+            ]
           });
         });
       </script>
