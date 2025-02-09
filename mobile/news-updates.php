@@ -68,6 +68,11 @@
             padding-top: 100px; /* Add padding to the top of the main container */
             padding-bottom: 100px; /* Add padding to the bottom of the main container */
         }
+        .card-img-top {
+            width: 100%;
+            height: 200px; /* Set a reasonable height */
+            object-fit: cover; /* Ensure the image covers the area */
+        }
     </style>
 </head>
 <body>
@@ -96,7 +101,7 @@
                         newsCard.className = 'col-md-12 mb-4';
                         newsCard.innerHTML = `
                             <div class="card">
-                                <img src="../${news.image_url}" class="card-img-top" alt="${news.title}" height="150px">
+                                <img src="../${news.image_url}" class="card-img-top" alt="${news.title}">
                                 <div class="card-body">
                                     <h5 class="card-title">${news.title}</h5>
                                     <p class="card-text">${news.short_description}</p>
