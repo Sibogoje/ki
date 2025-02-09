@@ -6,25 +6,15 @@ $db = $conn->connect();
 // Start a session
 session_start();
 
-
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
-
-
-
 $userID = $_SESSION['counselor_id']; 
-// Fetch user's notes 
-
-
-$query = "SELECT note_id, title, body, created_at FROM notes WHERE user_id = ? Order by created_at DESC"; 
-$stmt = $db->prepare($query); $stmt->bind_param('i', $userID); $stmt->execute(); 
-$result = $stmt->get_result(); 
-
-
-
-
+// Fetch user's profile data
+$query = "SELECT surname, name, email, phone_number, user_role, created_at FROM users WHERE user_id = ?";
+$stmt = $db->prepare($query);
+$stmt->bind_param('i', $userID);
+$stmt->execute();
+$userData = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+$db->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,158 +59,109 @@ $result = $stmt->get_result();
         </div>
         <!-- Spinner End -->
 
-
-      <?php 
-      include ('header.php');
-      ?>
-
+        <?php include('header.php'); ?>
 
         <!-- Content Start -->
         <div class="content">
-            <?php
-            include('navbar.php');
-            ?>
+            <?php include('navbar.php'); ?>
 
-<?php if (isset($_SESSION['success'])): ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php endif; ?>
-
-<?php if (isset($_SESSION['error'])): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php endif; ?>
-
-            <!-- Blank Start -->
-<?php
-// Fetch the user data for the profile
-$query = "SELECT surname, name, email, phone_number, user_role, created_at, client_username, town, region 
-          FROM users 
-          WHERE user_id = ?";
-$stmt = $db->prepare($query);
-$stmt->bind_param('i', $userID);
-$stmt->execute();
-$userData = $stmt->get_result()->fetch_assoc();
-?>
-
-<div class="container-fluid pt-4 px-4">
-    <div class="row bg-light rounded align-items-center justify-content-center mx-0">
-        <div class="col-md-12 mb-4" style="padding: 20px;">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h3>Profile</h3>
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <div class="card-body">
-                    <!-- Basic Information -->
-                    <h5 class="mb-3">Basic Information</h5>
-                    <table class="table table-borderless">
-                        <tr>
-                            <th>Name:</th>
-                            <td><?php echo htmlspecialchars($userData['name'] . ' ' . $userData['surname']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td><?php echo htmlspecialchars($userData['email']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Phone Number:</th>
-                            <td><?php echo htmlspecialchars($userData['phone_number']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Role:</th>
-                            <td><?php echo htmlspecialchars($userData['user_role']); ?></td>
-                        </tr>
-                    </table>
+            <?php endif; ?>
 
-                    <!-- Additional Information -->
-                    <h5 class="mt-4 mb-3">Additional Information</h5>
-                    <table class="table table-borderless">
-                        <tr>
-                            <th>Username:</th>
-                            <td><?php echo htmlspecialchars($userData['client_username']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Town:</th>
-                            <td><?php echo htmlspecialchars($userData['town']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Region:</th>
-                            <td><?php echo htmlspecialchars($userData['region']); ?></td>
-                        </tr>
-                        <tr>
-                            <th>Account Created:</th>
-                            <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
-                        </tr>
-                    </table>
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <div class="card-footer text-end">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
-</div>
+            <?php endif; ?>
 
+            <!-- Profile Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-12 mb-4" style="padding: 20px;">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h3>Profile</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- Basic Information -->
+                                <h5 class="mb-3">Basic Information</h5>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <th>Name:</th>
+                                        <td><?php echo htmlspecialchars($userData['name'] . ' ' . $userData['surname']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email:</th>
+                                        <td><?php echo htmlspecialchars($userData['email']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone Number:</th>
+                                        <td><?php echo htmlspecialchars($userData['phone_number']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Role:</th>
+                                        <td><?php echo htmlspecialchars($userData['user_role']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Account Created:</th>
+                                        <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="card-footer text-end">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <!-- Profile End -->
 
-
-<!-- Edit Profile Modal -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="update_profile.php" method="POST">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Pre-filled Form Fields -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($userData['name']); ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="surname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="surname" name="surname" value="<?php echo htmlspecialchars($userData['surname']); ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone_number" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($userData['phone_number']); ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="town" class="form-label">Town</label>
-                        <input type="text" class="form-control" id="town" name="town" value="<?php echo htmlspecialchars($userData['town']); ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="region" class="form-label">Region</label>
-                        <input type="text" class="form-control" id="region" name="region" value="<?php echo htmlspecialchars($userData['region']); ?>">
+            <!-- Edit Profile Modal -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="update_profile.php" method="POST">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Pre-filled Form Fields -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($userData['name']); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="surname" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="surname" name="surname" value="<?php echo htmlspecialchars($userData['surname']); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone_number" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($userData['phone_number']); ?>" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
 
-
-            <!-- Blank End -->
-
-<?php
-include('footer.php');
-?>
+            <?php include('footer.php'); ?>
         </div>
         <!-- Content End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
