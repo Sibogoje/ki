@@ -229,12 +229,12 @@ header h2 {
                 RESOURCES
             </a>
             <?php if ($loggedIn) { ?>
-                <a href="mobile/logout.php" class="section-button" style="width: 210%;">
+                <a href="mobile/logout.php" class="section-button" style="width: 205%;">
                     <img src="sign in.png" alt="Logout">
                     LOGOUT
                 </a>
             <?php } else { ?>
-                <a href="mobile/login-page.php" class="section-button" style="width: 210%;">
+                <a href="mobile/login-page.php" class="section-button" style="width: 205%;">
                     <img src="sign in.png" alt="Sign In/Sign Up">
                     SIGN IN/SIGN UP
                 </a>
