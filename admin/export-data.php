@@ -155,24 +155,26 @@ if (isset($_POST['export'])) {
               <?php if (isset($_SESSION['data'])): ?>
                 <div class="mt-4">
                   <h5>Query Results</h5>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <?php foreach ($_SESSION['columns'] as $column): ?>
-                          <th><?php echo htmlspecialchars($column); ?></th>
-                        <?php endforeach; ?>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($_SESSION['data'] as $row): ?>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
                         <tr>
-                          <?php foreach ($row as $cell): ?>
-                            <td><?php echo htmlspecialchars($cell); ?></td>
+                          <?php foreach ($_SESSION['columns'] as $column): ?>
+                            <th><?php echo htmlspecialchars($column); ?></th>
                           <?php endforeach; ?>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($_SESSION['data'] as $row): ?>
+                          <tr>
+                            <?php foreach ($row as $cell): ?>
+                              <td><?php echo htmlspecialchars($cell); ?></td>
+                            <?php endforeach; ?>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                   <form method="POST" action="export-data.php">
                     <button type="submit" name="export" class="btn btn-success">Export to Excel</button>
                   </form>
