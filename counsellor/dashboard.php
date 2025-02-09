@@ -75,14 +75,19 @@ session_start();
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<div class='card mb-4'>";
+                            echo "<div class='row g-0'>";
+                            echo "<div class='col-md-8'>";
                             echo "<div class='card-body'>";
-                            if ($row['image_url']) {
-                                echo "<img src='../" . htmlspecialchars($row['image_url']) . "' class='card-img-top' alt='News Image' style='height: 100px; object-fit: cover;'>";
-                            }
                             echo "<h5 class='card-title'>" . htmlspecialchars($row['title']) . "</h5>";
                             echo "<p class='card-text'>" . htmlspecialchars($row['short_description']) . "</p>";
                             echo "<p class='card-text text-muted'>" . date('F j, Y, g:i a', strtotime($row['created_at'])) . "</p>";
                             echo "<a href='news_detail.php?id=" . $row['id'] . "' class='btn btn-primary'>Read More</a>";
+                            echo "</div></div>";
+                            if ($row['image_url']) {
+                                echo "<div class='col-md-4'>";
+                                echo "<img src='../" . htmlspecialchars($row['image_url']) . "' class='img-fluid rounded-start' alt='News Image' style='height: 100px; width: 100px; object-fit: cover;'>";
+                                echo "</div>";
+                            }
                             echo "</div></div>";
                         }
                     } else {

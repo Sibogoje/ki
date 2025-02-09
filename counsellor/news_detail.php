@@ -78,13 +78,19 @@ $db->close();
                 <div class="col-md-12 mb-4">
                     <?php if ($news): ?>
                         <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo htmlspecialchars($news['title']); ?></h5>
+                                        <p class="card-text"><?php echo nl2br(htmlspecialchars($news['full_content'])); ?></p>
+                                        <p class="card-text text-muted"><?php echo date('F j, Y, g:i a', strtotime($news['created_at'])); ?></p>
+                                    </div>
+                                </div>
                                 <?php if ($news['image_url']): ?>
-                                    <img src="<?php echo htmlspecialchars($news['image_url']); ?>" class="card-img-top" alt="News Image">
+                                    <div class="col-md-4">
+                                        <img src="<?php echo htmlspecialchars($news['image_url']); ?>" class="img-fluid rounded-start" alt="News Image" style="height: 100px; width: 100px; object-fit: cover;">
+                                    </div>
                                 <?php endif; ?>
-                                <h5 class="card-title"><?php echo htmlspecialchars($news['title']); ?></h5>
-                                <p class="card-text"><?php echo nl2br(htmlspecialchars($news['full_content'])); ?></p>
-                                <p class="card-text text-muted"><?php echo date('F j, Y, g:i a', strtotime($news['created_at'])); ?></p>
                             </div>
                         </div>
                     <?php else: ?>
