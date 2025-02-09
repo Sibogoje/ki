@@ -56,6 +56,7 @@ if ($phone == null) {
             color: green;
             flex-grow: 1;
             text-align: center;
+            padding: 15px;
         }
         .back-button {
             color: green;
