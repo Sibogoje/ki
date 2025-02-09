@@ -155,7 +155,7 @@ $db->close();
                     <td><?php echo $row['booking_id']; ?></td>
                     <td><?php echo $row['client_name']." ".$row['client_surname']; ?></td>
                     <td><?php echo $row['phone_number']; ?></td>
-                    <td><?php echo $row['booking_date']; ?></td>
+                    <td><?php echo date('Y-m-d H:i', strtotime($row['booking_date'])); ?></td>
                     <td><?php echo $row['status']; ?></td>
                     <td><?php echo ucfirst($row['mode']); ?></td>
                     <td>
@@ -163,7 +163,7 @@ $db->close();
                         <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editBookingModal"
                            data-booking-id="<?php echo $row['booking_id']; ?>"
                            data-status="<?php echo $row['status']; ?>"
-                           data-booking-date="<?php echo $row['booking_date']; ?>"
+                           data-booking-date="<?php echo date('Y-m-d\TH:i', strtotime($row['booking_date'])); ?>"
                            data-mode="<?php echo $row['mode']; ?>">Edit</a>
 
                         <!-- Delete Link -->
