@@ -18,8 +18,9 @@ $result = $db->query($query);
     <link rel="stylesheet" href="../styles.css?v=1.0">
 </head>
 <body>
-    <header class="py-2">
-        <h2>Resources</h2>
+    <header>
+        <a href="../index.php" class="back-button py-2">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
     <main>
         <section>
@@ -39,6 +40,14 @@ $result = $db->query($query);
         </section>
     </main>
     <?php include "../footer.php"; ?>
+    <script>
+        function toggleNavDrawer() {
+            const navDrawer = document.getElementById('navDrawer');
+            const overlay = document.getElementById('overlay');
+            navDrawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
 
