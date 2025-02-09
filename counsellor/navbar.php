@@ -18,13 +18,6 @@
 
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="notifications.php" class="nav-link" data-bs-toggle="">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notifications</span>
-                        </a>
-
-                    </div>
-                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex"><?php echo $counselor_user_name . ' ' . $counselor_user_surname; ?></span>
