@@ -154,7 +154,7 @@ header {
         unset($_SESSION['message_feedback']);
     }
     ?>
-   <main class="main2 container-fluid" style="padding-bottom: 30px; padding-top: 0px;">
+   <main2 class="main2 container-fluid" style="padding-bottom: 30px; padding-top: 0px;">
     <div class="row">
         <div class="col-12">
             <ul class="chat-list">
@@ -177,7 +177,7 @@ header {
             </ul>
         </div>
     </div>
-</main>
+</main2>
 
     <!-- Floating Action Button -->
     <div class="fab" data-bs-toggle="modal" data-bs-target="#newMessageModal">
