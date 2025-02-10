@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileExtension = strtolower(end($fileNameCmps));
         
         // Set the target directory and file path
-        $uploadFileDir = $universal_url . 'admin/uploads/';
+        $uploadFileDir = $universal_url . '/admin/uploads/';
         $dest_path = $uploadFileDir . $fileName;
         
         // Debugging information
