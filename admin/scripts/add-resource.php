@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Set the target directory and file path
         $uploadFileDir = $_SERVER['DOCUMENT_ROOT'] . '/admin/uploads/';
         $dest_path = $uploadFileDir . $fileName;
-        $dest_url = $universal_url . 'admin/uploads/' . $fileName;
+        $dest_url = $universal_url . '/admin/uploads/' . $fileName;
         
         // Debugging information
         echo "<p>File temporary path: $fileTmpPath</p>";
