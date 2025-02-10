@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileExtension = strtolower(end($fileNameCmps));
         
         // Set the target directory and file path
-        $uploadFileDir = '../uploads/';
+       // $uploadFileDir = '../uploads/';
         //$rr = 'scripts/';
        // $universal_url
         $dest_path = $uploadFileDir . $fileName;
-        $dest_path1 = $universal_url + $uploadFileDir . $fileName;
+        $dest_path1 =  $uploadFileDir . $fileName;
         
         // Move the file to the target directory
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
