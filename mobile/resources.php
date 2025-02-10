@@ -73,7 +73,7 @@ $result = $db->query($query);
                         <li class="resource-item">
                             <h3><?php echo htmlspecialchars($row['title']); ?></h3>
                             <p><?php echo htmlspecialchars($row['description']); ?></p>
-                            <a href="../uploads/<?php echo htmlspecialchars($row['file']); ?>" download>Download</a>
+                            <a href="<?php echo htmlspecialchars($row['file']); ?>" download>Download</a>
                         </li>
                     <?php } ?>
                 </ul>
