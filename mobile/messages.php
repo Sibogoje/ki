@@ -42,17 +42,26 @@ if ($userID) {
     <link rel="icon" href="../icon.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: black;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            color: green;
-        }
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: green;
+    height: 60px; /* Ensure the header has a fixed height */
+}
+
+.main2 {
+    margin-top: 60px; /* Adjust this value to match the header height */
+    margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
+    width: 100%; /* Make the main container full width */
+    color: black; /* Keep content text color black */
+    padding-top: 0px; /* Add padding to the top of the main container */
+}
         .back-button {
             color: green;
             text-decoration: none;
@@ -71,13 +80,7 @@ if ($userID) {
             flex-grow: 1;
             text-align: center;
         }
-        .main2 {
-            margin-top: 80px; /* Adjust this value to ensure content appears below the header */
-            margin-bottom: 100px; /* Add margin to ensure content is not hidden behind the footer */
-            width: 100%; /* Make the main container full width */
-            color: black; /* Keep content text color black */
-            padding-top: 0px; /* Add padding to the top of the main container */
-        }
+
         .chat-list {
             list-style: none;
             padding: 0;
@@ -151,30 +154,30 @@ if ($userID) {
         unset($_SESSION['message_feedback']);
     }
     ?>
-    <main class="main2 container-fluid mt-2" style="padding-bottom: 30px; padding-top: 0px;">
-        <div class="row">
-            <div class="col-12">
-                <ul class="chat-list">
-                    <?php if (!empty($chats)): ?>
-                        <?php foreach ($chats as $chat): ?>
-                            <li class="chat-item" onclick="window.location.href='chat.php?chat_id=<?php echo $chat['chat_id']; ?>'">
-                                <img src="../user.png" alt="Profile Picture">
-                                <div class="chat-info">
-                                    <h5><?php echo htmlspecialchars($chat['chat_with_user']); ?></h5>
-                                    <p>Last message time: <?php echo htmlspecialchars($chat['last_message_time']); ?></p>
-                                </div>
-                                <div class="last-message-time">
-                                    <?php echo htmlspecialchars($chat['last_message_time']); ?>
-                                </div>
-                            </li>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <li class="text-center">No chats found.</li>
-                    <?php endif; ?>
-                </ul>
-            </div>
+   <main class="main2 container-fluid" style="padding-bottom: 30px; padding-top: 0px;">
+    <div class="row">
+        <div class="col-12">
+            <ul class="chat-list">
+                <?php if (!empty($chats)): ?>
+                    <?php foreach ($chats as $chat): ?>
+                        <li class="chat-item" onclick="window.location.href='chat.php?chat_id=<?php echo $chat['chat_id']; ?>'">
+                            <img src="../user.png" alt="Profile Picture">
+                            <div class="chat-info">
+                                <h5><?php echo htmlspecialchars($chat['chat_with_user']); ?></h5>
+                                <p>Last message time: <?php echo htmlspecialchars($chat['last_message_time']); ?></p>
+                            </div>
+                            <div class="last-message-time">
+                                <?php echo htmlspecialchars($chat['last_message_time']); ?>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="text-center">No chats found.</li>
+                <?php endif; ?>
+            </ul>
         </div>
-    </main>
+    </div>
+</main>
 
     <!-- Floating Action Button -->
     <div class="fab" data-bs-toggle="modal" data-bs-target="#newMessageModal">
