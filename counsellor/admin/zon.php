@@ -21,4 +21,6 @@ class Con {
         return $this->conn;
     }
 }
+
+$universal_url = "https://grinpath.com";
 ?>
