@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileExtension = strtolower(end($fileNameCmps));
         
         // Set the target directory and file path
-        $uploadFileDir = 'uploads/';
-        $rr = 'scripts/';
+        $uploadFileDir = '../uploads/';
+        //$rr = 'scripts/';
         $dest_path = $uploadFileDir . $fileName;
         $dest_path1 = $rr . $uploadFileDir . $fileName;
         
