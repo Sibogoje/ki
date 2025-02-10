@@ -15,8 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileExtension = strtolower(end($fileNameCmps));
         
         // Set the target directory and file path
-        $uploadFileDir = $universal_url . '/admin/uploads/';
+        $uploadFileDir = $_SERVER['DOCUMENT_ROOT'] . '/admin/uploads/';
         $dest_path = $uploadFileDir . $fileName;
+        $dest_url = $universal_url . 'admin/uploads/' . $fileName;
         
         // Debugging information
         echo "<p>File temporary path: $fileTmpPath</p>";
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $sql = "INSERT INTO resources (title, description, file) VALUES (?, ?, ?)";
                 $stmt = $db->prepare($sql);
-                $stmt->bind_param('sss', $title, $description, $dest_path);
+                $stmt->bind_param('sss', $title, $description, $dest_url);
                 
                 // Execute the query
                 if ($stmt->execute()) {
