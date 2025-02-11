@@ -136,7 +136,7 @@ $userID = $_SESSION['counselor_id'];
                             // Fetch users to chat with
                             $users_sql = "SELECT DISTINCT u.user_id, u.name, u.user_role 
                                           FROM users u 
-                                          LEFT JOIN bookings b ON u.user_id = b.user_id AND b.status = 'confirmed'
+                                          LEFT JOIN bookings b ON u.user_id = b.user_id AND b.status = 'confirmed' AND b.counselor_id = '$userID'
                                           WHERE u.user_id != '$userID' 
                                           AND (u.user_role IN ('admin', 'counselor') OR b.status = 'confirmed')";
                             $users_result = $db->query($users_sql);
