@@ -134,7 +134,11 @@ $userID = $_SESSION['counselor_id'];
                             <option value="" disabled selected>Select a user</option>
                             <?php
                             // Fetch users to chat with
-                            $users_sql = "SELECT user_id, name, user_role FROM users WHERE user_id != '$userID' AND user_role != 'client' ";
+                            $users_sql = "SELECT DISTINCT u.user_id, u.name, u.user_role 
+                                          FROM users u 
+                                          LEFT JOIN bookings b ON u.user_id = b.client_id AND b.status = 'confirmed'
+                                          WHERE u.user_id != '$userID' 
+                                          AND (u.user_role IN ('admin', 'counselor') OR b.status = 'confirmed')";
                             $users_result = $db->query($users_sql);
                             while ($user = $users_result->fetch_assoc()) {
                                 echo '<option value="' . $user['user_id'] . '">' . $user['name'] ." - ". $user['user_role'] . '</option>';
