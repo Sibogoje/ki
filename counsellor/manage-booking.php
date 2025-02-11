@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('sssssi', $status, $booking_date, $mode, $category, $comments, $booking_id);
     if ($stmt->execute()) {
         $success_message = "Booking updated successfully!";
+        echo '<script type="text/javascript">window.location.reload();</script>';
     } else {
         $error_message = "Failed to update booking. Please try again.";
     }
