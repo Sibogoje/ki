@@ -277,7 +277,7 @@
         </div>
         <div class="sponsors">
             <img src="../fnb foundation.png" alt="FNB" height="50px" width="100px">
-            <img src="../ki.png" alt="KI" height="50px" width="100px">
+            <img src="../icon.png" alt="KI" height="50px" width="100px">
             <img src="../ki.png" alt="KI">
         </div>
     </div>
