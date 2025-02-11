@@ -72,9 +72,9 @@
             gap: 10px;
         }
         .form-group .row input[type="text"], .form-group .row input[type="password"], .form-group .row input[type="email"], .form-group .row select {
-            width: 31%;
+            width: 48%; /* Adjust width to fit two fields per row */
             padding: 10px;
-            margin: 10px 0;
+            margin: 10px 1%; /* Adjust margin to fit two fields per row */
             border: none;
             border-radius: 5px;
         }
@@ -121,7 +121,8 @@
         }
         @media (max-width: 600px) {
             .form-group .row input[type="text"], .form-group .row input[type="password"], .form-group .row input[type="email"], .form-group .row select {
-                width: 100%;
+                width: 100%; /* Full width for small screens */
+                margin: 10px 0;
             }
         }
     </style>
@@ -148,10 +149,12 @@
         <div class="row">
             <input type="text" name="surname" placeholder="Surname" required>
             <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email Address">
         </div>
         <div class="row">
+            <input type="email" name="email" placeholder="Email Address">
             <input type="text" name="phone_number" placeholder="Phone Number" required>
+        </div>
+        <div class="row">
             <select name="gender" required>
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
@@ -183,16 +186,16 @@
                         <select id="constituency" name="constituency" required>
                 <option value="">Select Constituency</option>
             </select>
-             <input type="text" name="town" placeholder="Nearest Town" required>
-            
-            
         </div>
         <div class="row">
+             <input type="text" name="town" placeholder="Nearest Town" required>
              <select name="employment_status" required>
                 <option value="">Employment Status</option>
                 <option value="Employed">Employed</option>
                 <option value="Not Employed">Not Employed</option>
             </select>
+        </div>
+        <div class="row">
             <select name="orphan">
                 <option value="">Orphan Status</option>
                 <option value="Orphaned">Orphaned</option>
@@ -219,6 +222,8 @@
                 <option value="High School">High School</option>
                 <option value="Tertiary">Tertiary</option>
             </select>
+        </div>
+        <div class="row">
             <input type="password" name="password" placeholder="Password" required>
         </div>
         <div class="form-group full-width">
