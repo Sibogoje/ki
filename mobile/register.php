@@ -17,22 +17,32 @@
             padding : 30px;
         }
         header {
-            width: 100%;
-            background-color: black;
-            padding: 20px 0; /* Increase header height */
-            text-align: center;
             position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            background-color: black;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 0 20px;
+            padding: 10px;
+            color: green;
         }
-        header h1 {
+        .back-button {
+            color: green;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .back-button::before {
+            content: '<';
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        header h2 {
             margin: 0;
-            color: white;
-            flex: 1;
+            font-size: 16px;
+            color: green;
+            flex-grow: 1;
             text-align: center;
         }
         header a {
@@ -131,9 +141,9 @@
     <?php
     session_start();
     ?>
-    <header>
-        <a href="../index.php" class="text-green text-decoration-none">&larr;</a>
-        <h4>REGISTER</h4>
+ <header>
+        <a href="../index.php" class="back-button py-2">Back</a>
+        <h2>A SAFE SPACE FOR YOU</h2>
     </header>
     <div class="container">
 <form action="register_process.php" method="POST">
