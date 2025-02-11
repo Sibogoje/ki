@@ -31,11 +31,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
-            margin: 20px 0;
+            margin: 0px 0;
         }
         .container img {
             width: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
         .container h1 {
             margin-bottom: 20px;
