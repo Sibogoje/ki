@@ -35,7 +35,6 @@
             text-align: center;
             background-color: #004080;
             padding: 20px;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
