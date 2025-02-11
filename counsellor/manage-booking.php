@@ -20,6 +20,15 @@ $stmt->execute();
 $booking = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
+// Fetch client details
+$client_id = $booking['user_id'];
+$sql = "SELECT name, surname FROM users WHERE user_id = ?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param('i', $client_id);
+$stmt->execute();
+$client = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $status = $_POST['status'];
@@ -91,7 +100,7 @@ $db->close();
             <div class="container-fluid pt-4 px-4">
                 <div class="col-12">
                     <div class="bg-light rounded h-100 p-4">
-                        <h6 class="mb-4">Manage Booking</h6>
+                        <h6 class="mb-4">Manage Booking <?php echo $client['name'] . ' ' . $client['surname']; ?></h6>
                         <?php if (isset($success_message)) { echo "<div class='alert alert-success'>$success_message</div>"; } ?>
                         <?php if (isset($error_message)) { echo "<div class='alert alert-danger'>$error_message</div>"; } ?>
                         <form method="POST">
