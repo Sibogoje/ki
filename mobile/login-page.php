@@ -61,7 +61,7 @@
             background-color: rgb(51, 186, 186);
         }
         .sponsors {
-            margin-top: 0px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -72,7 +72,7 @@
             margin: 0 10px;
         }
         .links {
-            margin-top: 0px;
+            margin-top: 20px;
         }
         .links a {
             color: #00a65a;
