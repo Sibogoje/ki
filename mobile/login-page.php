@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 0;
+            padding: 50px;
         }
         header, footer {
             width: 100%;
