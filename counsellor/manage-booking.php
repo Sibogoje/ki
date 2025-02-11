@@ -42,18 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('sssssi', $status, $booking_date, $mode, $category, $comments, $booking_id);
     if ($stmt->execute()) {
         $success_message = "Booking updated successfully!";
-        echo '<script type="text/javascript">
-                window.onload = function() {
-                    if (!window.location.hash) {
-                        window.location = window.location + "#updated";
-                        window.location.reload();
-                    }
-                }
-              </script>';
+        header('Location: manage-booking.php?booking_id=' . $booking_id . '&success=1');
+        exit();
     } else {
         $error_message = "Failed to update booking. Please try again.";
     }
     $stmt->close();
+}
+
+// Display success message if redirected after successful update
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    $success_message = "Booking updated successfully!";
 }
 
 $db->close();
