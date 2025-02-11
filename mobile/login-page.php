@@ -21,7 +21,7 @@
             width: 100%;
             text-align: center;
             padding: 0px;
-            background-color: #004080;
+            background-color: none;
         }
         .container {
             text-align: center;
