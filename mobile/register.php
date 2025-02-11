@@ -143,7 +143,7 @@
     ?>
  <header>
         <a href="../index.php" class="back-button py-2">Back</a>
-        <h2>A SAFE SPACE FOR YOU</h2>
+        <h2>REGISTER</h2>
     </header>
     <div class="container">
 <form action="register_process.php" method="POST">
