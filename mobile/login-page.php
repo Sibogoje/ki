@@ -31,7 +31,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
-            margin: 20px 0; /* Reduce margin */
+            margin: 10px 0; /* Reduce margin */
         }
         .container img {
             width: 100px;
