@@ -20,7 +20,7 @@
         header, footer {
             width: 100%;
             text-align: center;
-            padding: 10px 0; /* Add padding */
+            padding: 5px 0; /* Reduce padding */
             background-color: none;
             position: fixed;
             left: 0;
@@ -39,7 +39,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
-            margin: 60px 0; /* Adjust margin to fit between header and footer */
+            margin: 40px 0; /* Reduce margin */
         }
         .container img {
             width: 100px;
