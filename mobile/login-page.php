@@ -98,7 +98,7 @@
 </head>
 <body>
     <header>
-        <h2>Welcome to Our App</h2>
+        <h2>Welcome to BHOBOKA</h2>
     </header>
     <?php
     session_start();
