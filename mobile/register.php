@@ -81,7 +81,7 @@
         .form-group.full-width {
             width: 100%;
         }
-        .form-group.full-width input[type="text"], .form-group.full-width input[type="password"], .form-group.full-width input[type="email"], .form-group full-width select {
+        .form-group.full-width input[type="text"], .form-group.full-width input[type="password"], .form-group full-width select {
             width: 100%;
         }
         .form-group input[type="submit"] {
@@ -188,7 +188,11 @@
             
         </div>
         <div class="row">
-             <input type="text" name="community" placeholder="Community" required>
+             <select name="employment_status" required>
+                <option value="">Employment Status</option>
+                <option value="Employed">Employed</option>
+                <option value="Not Employed">Not Employed</option>
+            </select>
             <select name="orphan">
                 <option value="">Orphan Status</option>
                 <option value="Orphaned">Orphaned</option>
