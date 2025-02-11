@@ -27,7 +27,7 @@
         }
         header {
             top: 0;
-            padding-top: 50px;
+            padding-top: 90px;
         }
         footer {
             bottom: 0;
