@@ -135,6 +135,7 @@ $db->close();
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category</label>
                                 <select class="form-control" name="category" id="category">
+                                    <options value="">Select Case Category</options>
                                     <option value="Mental" <?php if ($booking['category'] == 'Mental') echo 'selected'; ?>>Mental</option>
                                     <option value="Financial" <?php if ($booking['category'] == 'Financial') echo 'selected'; ?>>Financial</option>
                                     <option value="Addiction" <?php if ($booking['category'] == 'Addiction') echo 'selected'; ?>>Addiction</option>
