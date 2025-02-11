@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($booking['counselor_name'] . ' ' . $booking['counselor_surname']); ?></h5>
                                 <p class="card-text">
-                                    <strong>Phone:</strong> <?php echo htmlspecialchars($booking['counselor_phone']); ?><br>
+                                    <strong>Phone:</strong> <a href="tel:<?php echo htmlspecialchars($booking['counselor_phone']); ?>"><?php echo htmlspecialchars($booking['counselor_phone']); ?></a><br>
                                     <strong>Date:</strong> <?php echo htmlspecialchars($booking['booking_date']); ?><br>
                                     <strong>Status:</strong> <span class="badge bg-<?php echo $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : 'danger'); ?>"><?php echo htmlspecialchars($booking['status']); ?></span><br>
                                     <strong>Mode:</strong> <?php echo htmlspecialchars($booking['mode']); ?>
