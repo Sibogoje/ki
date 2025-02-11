@@ -58,6 +58,20 @@ while ($row = $result->fetch_assoc()) {
     $ageCounts[] = $row['client_count'];
 }
 
+// Query to count the number of bookings by category
+$sql = "SELECT category, COUNT(*) AS booking_count FROM bookings WHERE status != 'pending' GROUP BY category";
+$result = $db->query($sql);
+
+// Initialize data arrays
+$categories = [];
+$bookingCounts = [];
+
+// Fetch data and store it in arrays
+while ($row = $result->fetch_assoc()) {
+    $categories[] = $row['category'];
+    $bookingCounts[] = $row['booking_count'];
+}
+
 // Query to fetch the latest 5 activities
 $sql = "SELECT al.timestamp, al.action_type, al.description, u.name 
         FROM activity_log al 
@@ -108,6 +122,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
 
 </head>
 
@@ -314,6 +329,56 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
   </div>
 </div><!-- End Clients by Age -->
+
+
+<!-- Bookings by Category -->
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Bookings by Category</h5>
+      <div id="categoryChart" style="min-height: 400px;" class="echart"></div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Get data from PHP to display dynamically
+          var categories = <?php echo json_encode($categories); ?>;
+          var bookingCounts = <?php echo json_encode($bookingCounts); ?>;
+
+          var chartDom = document.getElementById('categoryChart');
+          var myChart = echarts.init(chartDom);
+          var option;
+
+          option = {
+              tooltip: {
+                  trigger: 'item'
+              },
+              legend: {
+                  orient: 'vertical',
+                  left: 'left'
+              },
+              series: [{
+                  name: 'Bookings',
+                  type: 'pie',
+                  radius: '50%',
+                  data: categories.map((category, index) => {
+                      return { value: bookingCounts[index], name: category };
+                  }),
+                  itemStyle: {
+                      color: function(params) {
+                          // Assign different colors to each slice
+                          var colorList = ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'];
+                          return colorList[params.dataIndex % colorList.length];
+                      }
+                  }
+              }]
+          };
+
+          myChart.setOption(option);
+      });
+      </script>
+    </div>
+  </div>
+</div><!-- End Bookings by Category -->
 
 
 <!-- Recent Activity -->
