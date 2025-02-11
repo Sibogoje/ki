@@ -132,8 +132,8 @@
     session_start();
     ?>
     <header>
-        <a href="../index.php" class="text-white text-decoration-none">&larr;</a>
-        <h1>REGISTER</h1>
+        <a href="../index.php" class="text-green text-decoration-none">&larr;</a>
+        <h4>REGISTER</h4>
     </header>
     <div class="container">
 <form action="register_process.php" method="POST">
