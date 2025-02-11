@@ -20,7 +20,7 @@
         header, footer {
             width: 100%;
             text-align: center;
-            padding: 5px 0; /* Reduce padding */
+            padding: 5px 5px; /* Reduce padding */
             background-color: none;
             position: fixed;
             left: 0;
