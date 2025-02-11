@@ -118,7 +118,16 @@ $db->close();
                             </div>
                             <div class="mb-3">
                                 <label for="category" class="form-label">Category</label>
-                                <input type="text" class="form-control" name="category" id="category" value="<?php echo $booking['category']; ?>">
+                                <select class="form-control" name="category" id="category">
+                                    <option value="Mental" <?php if ($booking['category'] == 'Mental') echo 'selected'; ?>>Mental</option>
+                                    <option value="Financial" <?php if ($booking['category'] == 'Financial') echo 'selected'; ?>>Financial</option>
+                                    <option value="Addiction" <?php if ($booking['category'] == 'Addiction') echo 'selected'; ?>>Addiction</option>
+                                    <option value="GBV" <?php if ($booking['category'] == 'GBV') echo 'selected'; ?>>GBV</option>
+                                    <option value="Divorce" <?php if ($booking['category'] == 'Divorce') echo 'selected'; ?>>Divorce</option>
+                                    <option value="Family conflicts" <?php if ($booking['category'] == 'Family conflicts') echo 'selected'; ?>>Family conflicts</option>
+                                    <option value="Marriage" <?php if ($booking['category'] == 'Marriage') echo 'selected'; ?>>Marriage</option>
+                                    <option value="Drug/substance abuse" <?php if ($booking['category'] == 'Drug/substance abuse') echo 'selected'; ?>>Drug/substance abuse</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="comments" class="form-label">Comments</label>
