@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $orphan = $_POST['orphan'];
     $disability = $_POST['disability'];
     $constituency = $_POST['constituency'];
-    $community = $_POST['community'];
+    $community = $_POST['employment_status'];
     $user_role = "client";
     $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
