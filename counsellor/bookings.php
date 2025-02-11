@@ -164,10 +164,10 @@ $db->close();
                            data-booking-id="<?php echo $row['booking_id']; ?>"
                            data-status="<?php echo $row['status']; ?>"
                            data-booking-date="<?php echo date('Y-m-d\TH:i', strtotime($row['booking_date'])); ?>"
-                           data-mode="<?php echo $row['mode']; ?>">Edit</a>
+                           data-mode="<?php echo $row['mode']; ?>">Manage</a>
 
                         <!-- Delete Link -->
-                        <a href="delete_booking.php?booking_id=<?php echo $row['booking_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this booking?');">Delete</a>
+                       
                     </td>
                 </tr>
             <?php } 
