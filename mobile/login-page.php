@@ -11,17 +11,25 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 20px; /* Reduce padding */
+            padding: 0; /* Remove padding */
         }
         header, footer {
             width: 100%;
             text-align: center;
-            padding: 0px;
+            padding: 10px 0; /* Add padding */
             background-color: none;
+            position: fixed;
+            left: 0;
+        }
+        header {
+            top: 0;
+        }
+        footer {
+            bottom: 0;
         }
         .container {
             text-align: center;
@@ -31,7 +39,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
-            margin: 10px 0; /* Reduce margin */
+            margin: 60px 0; /* Adjust margin to fit between header and footer */
         }
         .container img {
             width: 100px;
