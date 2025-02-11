@@ -160,14 +160,8 @@ $db->close();
                     <td><?php echo ucfirst($row['mode']); ?></td>
                     <td>
                         <!-- Edit Link with Data Attributes -->
-                        <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editBookingModal"
-                           data-booking-id="<?php echo $row['booking_id']; ?>"
-                           data-status="<?php echo $row['status']; ?>"
-                           data-booking-date="<?php echo date('Y-m-d\TH:i', strtotime($row['booking_date'])); ?>"
-                           data-mode="<?php echo $row['mode']; ?>">Manage</a>
-
+                        <a href="manage-booking.php?booking_id=<?php echo $row['booking_id']; ?>" class="btn btn-info btn-sm">Manage</a>
                         <!-- Delete Link -->
-                       
                     </td>
                 </tr>
             <?php } 
