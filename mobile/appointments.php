@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 
 // Fetch bookings for the logged-in user
 $bookings = [];
-$query = "SELECT b.booking_id, u.name AS counselor_name, u.surname AS counselor_surname, b.booking_date, b.mode, b.status 
+$query = "SELECT b.booking_id, u.name AS counselor_name, u.surname AS counselor_surname, u.phone_number AS counselor_phone, b.booking_date, b.mode, b.status 
           FROM bookings b
           JOIN users u ON b.counselor_id = u.user_id
           WHERE b.user_id = ?";
@@ -182,6 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($booking['counselor_name'] . ' ' . $booking['counselor_surname']); ?></h5>
                                 <p class="card-text">
+                                    <strong>Phone:</strong> <?php echo htmlspecialchars($booking['counselor_phone']); ?><br>
                                     <strong>Date:</strong> <?php echo htmlspecialchars($booking['booking_date']); ?><br>
                                     <strong>Status:</strong> <span class="badge bg-<?php echo $booking['status'] === 'confirmed' ? 'success' : ($booking['status'] === 'pending' ? 'warning' : 'danger'); ?>"><?php echo htmlspecialchars($booking['status']); ?></span><br>
                                     <strong>Mode:</strong> <?php echo htmlspecialchars($booking['mode']); ?>
