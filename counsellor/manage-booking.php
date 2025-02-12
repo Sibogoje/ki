@@ -66,6 +66,9 @@ $db->close();
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+
+     <!-- Favicon -->
+     <link href="../icon.png" rel="icon">
     <!-- Include necessary CSS and JS files -->
     !-- Include Flatpickr CSS -->
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
