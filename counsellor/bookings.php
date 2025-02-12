@@ -156,7 +156,27 @@ $db->close();
                     <td><?php echo $row['client_name']." ".$row['client_surname']; ?></td>
                     <td><?php echo $row['phone_number']; ?></td>
                     <td><?php echo date('Y-m-d H:i', strtotime($row['booking_date'])); ?></td>
-                    <td><?php echo $row['status']; ?></td>
+                    <td>
+                        <?php
+                        $status = $row['status'];
+                        $statusClass = '';
+                        switch ($status) {
+                            case 'confirmed':
+                                $statusClass = 'bg-success text-white';
+                                break;
+                            case 'pending':
+                                $statusClass = 'bg-warning text-dark';
+                                break;
+                            case 'completed':
+                                $statusClass = 'bg-primary text-white';
+                                break;
+                            case 'canceled':
+                                $statusClass = 'bg-danger text-white';
+                                break;
+                        }
+                        ?>
+                        <span class="badge rounded-pill <?php echo $statusClass; ?>"><?php echo ucfirst($status); ?></span>
+                    </td>
                     <td><?php echo ucfirst($row['mode']); ?></td>
                     <td>
                         <!-- Edit Link with Data Attributes -->
@@ -171,7 +191,6 @@ $db->close();
             </tr>
         <?php } ?>
     </tbody>
-</table>
 
                             </div>
                         </div>
