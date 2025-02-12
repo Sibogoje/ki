@@ -191,6 +191,7 @@ $db->close();
             </tr>
         <?php } ?>
     </tbody>
+        </table>
 
                             </div>
                         </div>
